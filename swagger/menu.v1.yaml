@@ -1,0 +1,11 @@
+title: menu
+type: object
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  price:
+    type: integer
+  category:
+    $ref: ./category.v1.yaml

@@ -1,0 +1,13 @@
+title: customer
+type: object
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  age:
+    type: integer
+  sex:
+    type: string
+  memo:
+    type: string
