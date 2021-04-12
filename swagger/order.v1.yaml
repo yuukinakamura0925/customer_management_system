@@ -1,0 +1,11 @@
+title: order
+type: object
+properties:
+  id:
+    type: integer
+  order_menus:
+    type: array
+    items:
+      $ref: ./order_menu.v1.yaml
+  customer_id:
+    type: integer

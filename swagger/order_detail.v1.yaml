@@ -1,0 +1,9 @@
+title: order_menu
+type: object
+properties:
+  id:
+    type: integer
+  order_id:
+    type: integer
+  menu_id:
+    $ref: ./menu.v1.yaml
