@@ -1,11 +1,11 @@
 openapi: 3.0.0
 info:
   title: swagger
-  version: '1.0'
+  version: "1.0"
 servers:
-  - url: 'http://localhost:3000'
+  - url: "http://localhost:3000"
 paths:
-  '/customers/{customer_id}':
+  "/customers/{customer_id}":
     parameters:
       - schema:
           type: string
@@ -16,31 +16,31 @@ paths:
       summary: Your GET endpoint
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: ./customer.v1.yaml
       operationId: get-customers-customer_id
-      description: ''
+      description: ""
     put:
-      summary: ''
+      summary: ""
       operationId: put-customers-customer_id
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: ./customer.v1.yaml
     delete:
-      summary: ''
+      summary: ""
       operationId: delete-customers-customer_id
       responses:
-        '200':
+        "200":
           description: OK
-  '/menus/{menu_id}':
+  "/menus/{menu_id}":
     parameters:
       - schema:
           type: string
@@ -51,7 +51,7 @@ paths:
       summary: Your GET endpoint
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -59,27 +59,27 @@ paths:
                 $ref: ./menu.v1.yaml
       operationId: get-menus-menu_id
     put:
-      summary: ''
+      summary: ""
       operationId: put-menus-menu_id
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: ./menu.v1.yaml
     delete:
-      summary: ''
+      summary: ""
       operationId: delete-menus-menu_id
       responses:
-        '200':
+        "200":
           description: OK
   /orders:
     get:
       summary: Your GET endpoint
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -89,10 +89,10 @@ paths:
                   $ref: ./order.v1.yaml
       operationId: get-orders
     post:
-      summary: ''
+      summary: ""
       operationId: post-orders
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -103,7 +103,7 @@ paths:
       summary: Your GET endpoint
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -113,16 +113,16 @@ paths:
                   $ref: ./customer.v1.yaml
       operationId: get-customers
     post:
-      summary: ''
+      summary: ""
       operationId: post-customers
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: ./customer.v1.yaml
-  '/orders/{order_id}':
+  "/orders/{order_id}":
     parameters:
       - schema:
           type: string
@@ -133,7 +133,7 @@ paths:
       summary: Your GET endpoint
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -141,28 +141,28 @@ paths:
                 $ref: ./order.v1.yaml
       operationId: get-orders-orders_id
     delete:
-      summary: ''
+      summary: ""
       operationId: delete-orders-orders_id
       responses:
-        '200':
+        "200":
           description: OK
     put:
-      summary: ''
+      summary: ""
       operationId: put-orders-orders_id
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: ./order.v1.yaml
-      description: ''
+      description: ""
   /menus:
     get:
       summary: Your GET endpoint
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -172,10 +172,10 @@ paths:
                   $ref: ./menu.v1.yaml
       operationId: get-menus
     post:
-      summary: ''
+      summary: ""
       operationId: post-menus
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -186,7 +186,7 @@ paths:
       summary: Your GET endpoint
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -196,17 +196,17 @@ paths:
                   $ref: ./category.v1.yaml
       operationId: get-category
     post:
-      summary: ''
+      summary: ""
       operationId: post-category
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: ./category.v1.yaml
     parameters: []
-  '/categories/{category_id}':
+  "/categories/{category_id}":
     parameters:
       - schema:
           type: string
@@ -217,7 +217,7 @@ paths:
       summary: Your GET endpoint
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -225,27 +225,27 @@ paths:
                 $ref: ./category.v1.yaml
       operationId: get-category-category_id
     delete:
-      summary: ''
+      summary: ""
       operationId: delete-category-category_id
       responses:
-        '200':
+        "200":
           description: OK
     put:
-      summary: ''
+      summary: ""
       operationId: put-category-category_id
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: ./category.v1.yaml
-  '/orders/{order_id}/order_menus/{order_menu_id}':
+  "/orders/{order_id}/order_menus/{order_menu_id}":
     get:
       summary: Your GET endpoint
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -253,20 +253,20 @@ paths:
                 $ref: ./order_detail.v1.yaml
       operationId: get-order_menus
     put:
-      summary: ''
+      summary: ""
       operationId: put-order_menus
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: ./order_menu.v1.yaml
+                $ref: ./order_detail.v1.yaml
     delete:
-      summary: ''
+      summary: ""
       operationId: delete-order_menus
       responses:
-        '200':
+        "200":
           description: OK
     parameters:
       - schema:
@@ -279,7 +279,7 @@ paths:
         name: order_menu_id
         in: path
         required: true
-  '/orders/{order_id}/order_details':
+  "/orders/{order_id}/order_details":
     parameters:
       - schema:
           type: string
@@ -290,7 +290,7 @@ paths:
       summary: Your GET endpoint
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -300,10 +300,10 @@ paths:
                   $ref: ./order_detail.v1.yaml
       operationId: get-orders-order_id-order_menus
     post:
-      summary: ''
+      summary: ""
       operationId: post-orders-order_id-order_menus
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:

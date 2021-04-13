@@ -6,6 +6,6 @@ properties:
   order_menus:
     type: array
     items:
-      $ref: ./order_menu.v1.yaml
+      $ref: ./order_detail.v1.yaml
   customer_id:
     type: integer

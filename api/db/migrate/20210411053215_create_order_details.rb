@@ -1,7 +1,6 @@
-class CreateOrderDetails < ActiveRecord::Migration[6.1]
+class CreateOrderDetails < ActiveRecord::Migration[6.0]
   def change
     create_table :order_details do |t|
-      t.integer :id
       t.references :order, null: false, foreign_key: true
       t.references :menu, null: false, foreign_key: true
 
