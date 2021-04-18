@@ -22,6 +22,7 @@ lint:
 rails_init:
 	make migratereset;
 	make migrate;
+	make seed
 	
 
 migrate:
