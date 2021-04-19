@@ -1,15 +1,15 @@
 class CustomersController < ActionController::API
-
   def create
     customer = Customer.new(customer_params)
+    binding.pry
     if customer.save
-       render json: { status: 'success11111', data: customer }
+      render json: { status: "success", data: customer }
     else
-      render json: { status: 'error', data: customer.errors }
+      render json: { status: "error", data: customer.errors }
     end
   end
 
-  def index 
+  def index
     customer = Customer.all
     render json: customer
   end
@@ -22,27 +22,26 @@ class CustomersController < ActionController::API
   def update
     customer = Customer.find(params[:id])
     if customer.update(customer_params)
-      render json: { status: 'success11111', data: customer }
+      render json: { status: "success", data: customer }
     else
-      render json: { status: 'error', data: customer.errors }
+      render json: { status: "error", data: customer.errors }
     end
   end
 
   def destroy
     customer = Customer.find(params[:id])
     if customer.destroy
-      render json: { status: 'success11111'}
+      render json: { status: "success" }
     else
-      render json: { status: 'error', data: customer.errors }
+      render json: { status: "error", data: customer.errors }
     end
   end
 
   private
   def customer_params
-    puts(params) 
-    #  params.require(:customer).permit(:name, :age, :sex, :memo) ←viewにてmodelを指定してる場合
-    params.permit(:name, :age, :sex, :memo) 
+    puts(params)
+    # params.require(:customer).permit(:name, :age, :sex, :memo)
+    params.permit(:name, :age, :sex, :memo)
 
   end
-
 end
