@@ -3,7 +3,7 @@ build:
 	docker-compose -f docker-compose.yaml build
 
 up:
-	docker-compose -f docker-compose.yaml up -d
+	docker-compose -f docker-compose.yaml up 
 
 down:
 	docker-compose -f docker-compose.yaml down
