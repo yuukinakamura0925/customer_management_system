@@ -1,7 +1,6 @@
 class CustomersController < ActionController::API
   def create
     customer = Customer.new(customer_params)
-    binding.pry
     if customer.save
       render json: { status: "success", data: customer }
     else
@@ -40,8 +39,6 @@ class CustomersController < ActionController::API
   private
   def customer_params
     puts(params)
-    # params.require(:customer).permit(:name, :age, :sex, :memo)
-    params.permit(:name, :age, :sex, :memo)
-
+    params.require(:customer).permit(:name, :age, :sex, :memo)
   end
 end
