@@ -3,7 +3,7 @@ import App from "./App.vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import router from "./router/index";
-// import vuetify from "./plugins/vuetify";
+import vuetify from "./plugins/vuetify";
 Vue.config.productionTip = false;
 
 Vue.use(VueAxios, axios);

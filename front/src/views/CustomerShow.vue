@@ -1,9 +1,29 @@
 <template>
   <div>
-    test
-    {{ res.id }}
-    {{ res }}
+    <h1>Customer info</h1>
+    <form>
+      <p>
+        名前：{{ customer.name }}
+      </p>
+      <p>
+        年齢：{{ customer.age }}
+        
+      </p>
+      <p>
+        性別：{{ customer.sex }}
+      </p>
+      <p>
+        メモ：{{ customer.memo }}
+      </p>
+      <p>
+      <input type="submit" value="編集" @click="$router.push({ name: 'customers_edit', params: { id: customer.id } })" >
+      <input type="submit" value="登録" @click="create">
+      </p>
+      <input type="submit" value="一覧ページに戻る" @click="$router.push({ name: 'customers'})" >
+      <p>
 
+      </p>
+    </form>  
   </div>
 </template>
 
@@ -13,7 +33,7 @@ export default {
   },
   data() {
     return {
-      res: null
+      customer: null
     }
   },
   created() {
@@ -23,7 +43,7 @@ export default {
       .get(path)
       .then(
         response => (
-          (this.res = response.data)
+          (this.customer = response.data)
         )
       );
   },

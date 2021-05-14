@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>New customer form </h1>
     <form>
       <p>
         名前：<input type="text" v-model="name" size="40">
@@ -15,7 +16,6 @@
       </p>
       <p>
       <input type="submit" value="登録" @click="create">
-      
       </p>
     </form>  
   </div>
@@ -27,10 +27,10 @@ export default {
   },
   data() {
     return {
-      name: " ",
-      age: " ",
-      sex: " ",
-      memo: " "
+      name: "",
+      age: "",
+      sex: "",
+      memo: ""
     }
   },
   methods: {

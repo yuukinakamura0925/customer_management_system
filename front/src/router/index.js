@@ -1,9 +1,9 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Customers from "../views/Customers.vue";
-import Customer from "../views/Customer.vue";
+import CustomerShow from "../views/CustomerShow.vue";
 import CustomerNew from "../views/CustomerNew.vue";
-
+import CustomerEdit from "../views/CustomerEdit.vue";
 Vue.use(Router);
 
 export default new Router({
@@ -17,12 +17,17 @@ export default new Router({
     {
       path: "/customers/:id",
       name: "customer",
-      component: Customer,
+      component: CustomerShow,
     },
     {
-      path: "/customer/new",
-      name: "customer_new",
+      path: "/customers_new",
+      name: "customers_new",
       component: CustomerNew,
+    },
+    {
+      path: "/customers/:id/edit",
+      name: "customers_edit",
+      component: CustomerEdit,
     },
   ],
 });
