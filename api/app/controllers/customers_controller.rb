@@ -38,7 +38,6 @@ class CustomersController < ActionController::API
 
   private
   def customer_params
-    puts(params)
     # params.require(:customer).permit(:name, :age, :sex, :memo)
     params.permit(:name, :age, :sex, :memo)
   end

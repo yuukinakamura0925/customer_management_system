@@ -37,9 +37,7 @@ class MenusController < ActionController::API
   end
 
   private
-  
   def menu_params
-    puts(params)
-    params.permit(:name, :price)
+    params.permit(:name, :price, :category_id)
   end
 end
