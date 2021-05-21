@@ -8,6 +8,8 @@ import Menus from "../views/Menus.vue";
 import MenuShow from "../views/MenuShow.vue";
 import MenuNew from "../views/MenuNew.vue";
 import MenuEdit from "../views/MenuEdit.vue";
+import Orders from "../views/Orders.vue";
+import Bill from "../views/Bill.vue";
 
 Vue.use(Router);
 
@@ -53,6 +55,31 @@ export default new Router({
       path: "/menus/:id/edit",
       name: "menus_edit",
       component: MenuEdit,
+    },
+    {
+      path: "/orders",
+      name: "orders",
+      component: Orders,
+    },
+    // {
+    //   path: "/orders/:id",
+    //   name: "order",
+    //   component: OrderShow,
+    // },
+    // {
+    //   path: "/orders_new",
+    //   name: "orders_new",
+    //   component: OrderNew,
+    // },
+    // {
+    //   path: "/orders/:id/edit",
+    //   name: "orders_edit",
+    //   component: OrderEdit,
+    // },
+    {
+      path: "/bill",
+      name: "bill",
+      component: Bill,
     },
   ],
 });

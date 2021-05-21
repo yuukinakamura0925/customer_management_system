@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <a href="http://localhost:8080/customers">お客様一覧ページへ</a><br>
-    <a href="http://localhost:8080/menus">メニュー一覧ページへ</a>
+    <a href="http://localhost:8080/menus">メニュー一覧ページへ</a><br>
+    <a href="http://localhost:8080/orders">オーダー一覧ページへ</a>
     <router-view />
   </div>
 </template>
