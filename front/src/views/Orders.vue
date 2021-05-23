@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Order list</h1>
-    <button type="button" @click="$router.push({ name: 'orders_new'})">お会計へ</button>
+    <button type="button" @click="$router.push({ name: 'bill'})">お会計へ</button>
     <table>
       <thead>
         <tr>
@@ -27,6 +27,7 @@
   
       </tbody>
     </table>
+
   </div>
 </template>
 

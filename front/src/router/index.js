@@ -10,6 +10,10 @@ import MenuNew from "../views/MenuNew.vue";
 import MenuEdit from "../views/MenuEdit.vue";
 import Orders from "../views/Orders.vue";
 import Bill from "../views/Bill.vue";
+import Categories from "../views/Categories.vue";
+import CategoryShow from "../views/CategoryShow.vue";
+import CategoryNew from "../views/CategoryNew.vue";
+import CategoryEdit from "../views/CategoryEdit.vue";
 
 Vue.use(Router);
 
@@ -80,6 +84,26 @@ export default new Router({
       path: "/bill",
       name: "bill",
       component: Bill,
+    },
+    {
+      path: "/categories",
+      name: "categories",
+      component: Categories,
+    },
+    {
+      path: "/categories/:id",
+      name: "category",
+      component: CategoryShow,
+    },
+    {
+      path: "/categories_new",
+      name: "categories_new",
+      component: CategoryNew,
+    },
+    {
+      path: "/categories/:id/edit",
+      name: "categories_edit",
+      component: CategoryEdit,
     },
   ],
 });

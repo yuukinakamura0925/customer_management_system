@@ -25,7 +25,8 @@
     "tests/**/*.ts",
     "tests/**/*.tsx",
     "src/main.js",
-    "src/plugins/vuetify.js"
+    "src/plugins/vuetify.js",
+    "src/router/index.js"
   ],
   "exclude": ["node_modules"]
 }
