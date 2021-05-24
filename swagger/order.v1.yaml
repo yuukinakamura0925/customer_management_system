@@ -3,7 +3,7 @@ type: object
 properties:
   id:
     type: integer
-  order_menus:
+  order_details:
     type: array
     items:
       $ref: ./order_detail.v1.yaml

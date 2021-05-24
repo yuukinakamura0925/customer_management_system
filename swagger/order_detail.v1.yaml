@@ -1,4 +1,4 @@
-title: order_menu
+title: order_detail
 type: object
 properties:
   id:

@@ -9,8 +9,8 @@ class CustomersController < ActionController::API
   end
 
   def index
-    customer = Customer.all
-    render json: customer
+    customers = Customer.all
+    render json: customers
   end
 
   def show
@@ -38,7 +38,7 @@ class CustomersController < ActionController::API
 
   private
   def customer_params
-    puts(params)
-    params.require(:customer).permit(:name, :age, :sex, :memo)
+    # params.require(:customer).permit(:name, :age, :sex, :memo)
+    params.permit(:name, :age, :sex, :memo)
   end
 end

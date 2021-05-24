@@ -1,19 +1,21 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+     <router-link to="/customers">お客様一覧</router-link><br>
+     <router-link to="/menus">メニュー一覧ページへ</router-link><br>
+     <router-link to="/orders">オーダー一覧ページへ</router-link><br> 
+     <router-link to="/categories">カテゴリー一覧ページへ</router-link><br>
+     <router-link to="/bill">お会計ページへ</router-link>
+     
     <router-view />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
 
 export default Vue.extend({
   name: "App",
   components: {
-    HelloWorld,
   },
 });
 </script>

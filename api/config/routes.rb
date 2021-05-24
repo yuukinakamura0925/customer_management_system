@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :customers, :category, :menu, :order_detail, :order
+  resources :customers, :categories, :menus, :order_details, :orders
 end
