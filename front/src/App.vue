@@ -5,7 +5,9 @@
      <router-link to="/orders">オーダー一覧ページへ</router-link><br> 
      <router-link to="/categories">カテゴリー一覧ページへ</router-link><br>
      <router-link to="/bill">お会計ページへ</router-link>
-     
+     <v-btn
+        elevation="2"
+      >test</v-btn>
     <router-view />
   </div>
 </template>
