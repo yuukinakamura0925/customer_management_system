@@ -29,9 +29,7 @@
         </tr>
       </tbody>
     </table>
-    <button type="button" >
-         ハラディンカ
-    </button>
+    <p>ご請求金額{{total}}円</p>
     <form>
       <p>
         お預かり：<input type="text" size="40">円
