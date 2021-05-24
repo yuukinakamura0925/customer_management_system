@@ -33,7 +33,7 @@ export default {
       memo: ""
     }
   },
-  methods: {
+  methods: {  
     create() {
       let path = "http://localhost:3000/customers"
       let params = {

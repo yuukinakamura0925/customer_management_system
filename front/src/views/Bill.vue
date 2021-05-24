@@ -17,15 +17,22 @@
           v-for="menu in menus"
           :key="menu.id"
         >
-          <td><button v-on:click="count++">{{ menu.name }}{{ count }}</button></td>
+          <td>
+            <CountUpButton 
+              @catchCount="calculationBill"
+              :name="menu.name"
+              :price="menu.price"
+            />
+            
+          </td>
           <td>{{ menu.price }}</td>
         </tr>
       </tbody>
     </table>
+    <button type="button" >
+         ハラディンカ
+    </button>
     <form>
-      <p>
-        ご請求額：<input type="text" size="40">円
-      </p>
       <p>
         お預かり：<input type="text" size="40">円
       </p>
@@ -37,15 +44,20 @@
 </template>
 
 <script lang="ts">
+import CountUpButton from "../components/CountUpButton";
+
 export default {
-  
   components: {
+    CountUpButton
   },
-  data: function() {
+  data() {
     return {
       menus: null,
-      count: 0,
+      total: 0
     }
+  },
+  filters: {
+    // ここにbillingの計算がされる処理を書く
   },
   created() {
     let path = "http://localhost:3000/menus";
@@ -58,14 +70,12 @@ export default {
       );
   },
   methods: {
-    deleteRecord(id) {
-      if (confirm("削除してもよろしいでしょうか？")){
-        let path = "http://localhost:3000/menus/" + id;
-        this.axios
-        .delete(path)
-        location.reload();
+    calculationBill(menuPrice){
+      this.total += menuPrice
+      if(this.total < 0){
+        this.total = 0
       }
-    },
+    }
   }
 };
 </script>
