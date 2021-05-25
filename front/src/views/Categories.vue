@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Category list</h1>
-    <button type="button" @click="$router.push({ name: 'categories_new'})">カテゴリー登録</button>
+    <v-btn @click="$router.push({ name: 'categories_new'})">カテゴリー登録</v-btn>
     <table>
       <thead>
         <tr>
@@ -16,9 +16,9 @@
           :key="category.id"
         >
           <td>{{ category.name }}</td>
-          <td><button type="button" @click="$router.push({ name: 'category', params: { id: category.id } })">詳細</button></td>
-          <td><button type="button" @click="$router.push({ name: 'categories_edit', params: { id: category.id } })">編集</button></td>
-          <td><button type="button" @click="deleteRecord(category.id)">削除</button></td>
+          <td><v-btn  @click="$router.push({ name: 'category', params: { id: category.id } })">詳細</v-btn></td>
+          <td><v-btn  @click="$router.push({ name: 'categories_edit', params: { id: category.id } })">編集</v-btn></td>
+          <td><v-btn  @click="deleteRecord(category.id)">削除</v-btn></td>
         </tr>
   
       </tbody>

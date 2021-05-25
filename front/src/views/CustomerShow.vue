@@ -15,14 +15,27 @@
       <p>
         メモ：{{ customer.memo }}
       </p>
+      
       <p>
-      <input type="submit" value="編集" @click="$router.push({ name: 'customers_edit', params: { id: customer.id } })" >
-      <input type="submit" value="登録" @click="create">
+        <v-btn
+        class="mr-4"
+        @click="$router.push({ name: 'customers_edit', params: { id: customer.id } })"
+        >
+        編集
+        </v-btn>
+        <v-btn
+        class="mr-4"
+        @click="create"
+        >
+        登録
+        </v-btn>
       </p>
-      <input type="submit" value="一覧ページに戻る" @click="$router.push({ name: 'customers'})" >
-      <p>
-
-      </p>
+        <v-btn
+        class="mr-4"
+        @click="$router.push({ name: 'customers'})"
+        >
+        一覧ページに戻る
+        </v-btn>
     </form>  
   </div>
 </template>

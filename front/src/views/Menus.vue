@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Menu list</h1>
-    <button type="button" @click="$router.push({ name: 'menus_new'})">新規メニュー登録</button>
+    <v-btn  @click="$router.push({ name: 'menus_new'})">新規メニュー登録</v-btn>
     <table>
       <thead>
         <tr>
@@ -20,9 +20,9 @@
         >
           <td>{{ menu.name }}</td>
           <td>{{ menu.price }}</td>
-          <td><button type="button" @click="$router.push({ name: 'menu', params: { id: menu.id } })">詳細</button></td>
-          <td><button type="button" @click="$router.push({ name: 'menus_edit', params: { id: menu.id } })">編集</button></td>
-          <td><button type="button" @click="deleteRecord(menu.id)">削除</button></td>
+          <td><v-btn  @click="$router.push({ name: 'menu', params: { id: menu.id } })">詳細</v-btn></td>
+          <td><v-btn  @click="$router.push({ name: 'menus_edit', params: { id: menu.id } })">編集</v-btn></td>
+          <td><v-btn  @click="deleteRecord(menu.id)">削除</v-btn></td>
         </tr>
   
       </tbody>

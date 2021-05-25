@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Customer list</h1>
-    <button type="button" @click="$router.push({ name: 'customers_new'})">新規顧客登録</button>
+    <v-btn  @click="$router.push({ name: 'customers_new'})">新規顧客登録</v-btn>
     <table>
       <thead>
         <tr>
@@ -28,9 +28,9 @@
           <td>{{ customer.age }}</td>
           <td>{{ customer.sex }}</td>
           <td>{{ customer.memo }}</td>
-          <td><button type="button" @click="$router.push({ name: 'customer', params: { id: customer.id } })">詳細</button></td>
-          <td><button type="button" @click="$router.push({ name: 'customers_edit', params: { id: customer.id } })">編集</button></td>
-          <td><button type="button" @click="deleteRecord(customer.id)">削除</button></td>
+          <td><v-btn  @click="$router.push({ name: 'customer', params: { id: customer.id } })">詳細</v-btn></td>
+          <td><v-btn  @click="$router.push({ name: 'customers_edit', params: { id: customer.id } })">編集</v-btn></td>
+          <td><v-btn  @click="deleteRecord(customer.id)">削除</v-btn></td>
         </tr>
   
       </tbody>

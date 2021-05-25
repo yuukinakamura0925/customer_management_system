@@ -1,8 +1,9 @@
 <template>
 <div>
   {{ name }}
-  <button @click="countUp(price)">+</button>
-  <button @click="countDown(price)">-</button>
+  
+  <v-btn @click="countUp(price)">+</v-btn>
+  <v-btn @click="countDown(price)">-</v-btn>
   {{ count }}
 </div>
   

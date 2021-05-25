@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Order list</h1>
-    <button type="button" @click="$router.push({ name: 'bill'})">お会計へ</button>
+    <v-btn  @click="$router.push({ name: 'bill'})">お会計へ</v-btn>
     <table>
       <thead>
         <tr>
@@ -20,9 +20,9 @@
         >
           <td>{{ order.customer_id }}</td>
           <td>{{ order.created_at }}</td>
-          <td><button type="button" @click="$router.push({ name: 'order', params: { id: order.id } })">お会計詳細</button></td>
-          <td><button type="button" @click="$router.push({ name: 'orders_edit', params: { id: order.id } })">編集</button></td>
-          <td><button type="button" @click="deleteRecord(order.id)">削除</button></td>
+          <td><v-btn  @click="$router.push({ name: 'order', params: { id: order.id } })">お会計詳細</v-btn></td>
+          <td><v-btn  @click="$router.push({ name: 'orders_edit', params: { id: order.id } })">編集</v-btn></td>
+          <td><v-btn  @click="deleteRecord(order.id)">削除</v-btn></td>
         </tr>
   
       </tbody>

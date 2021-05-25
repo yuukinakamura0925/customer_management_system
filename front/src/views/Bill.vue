@@ -35,13 +35,13 @@
         お預かり：<input type="text" size="40">円
       </p>
       <p>
-        <button type="button" @click="$router.push({ name: 'bill'})">支払いへ進む</button>
+        <v-btn  @click="$router.push({ name: 'bill'})">支払いへ進む</v-btn>
       </p>
     </form>
   </div>
 </template>
 
-<script lang="ts">
+<script lang="js">
 import CountUpButton from "../components/CountUpButton";
 
 export default {
