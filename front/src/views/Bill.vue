@@ -46,7 +46,7 @@ import CountUpButton from "../components/CountUpButton";
 
 export default {
   components: {
-    CountUpButton
+    CountUpButton,
   },
   data() {
     return {

@@ -1,0 +1,15 @@
+title: order_detail
+type: object
+properties:
+  id:
+    type: integer
+  cart_id:
+    $ref: ./cart_detail.v1.yaml
+  menu_id:
+    $ref: ./menu.v1.yaml
+  qry:
+    type:
+      - string
+      - integer
+  price:
+    type: string

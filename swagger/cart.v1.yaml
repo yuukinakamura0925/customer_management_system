@@ -1,0 +1,7 @@
+title: category
+type: object
+properties:
+  id:
+    type: integer
+  customer_id:
+    type: string
