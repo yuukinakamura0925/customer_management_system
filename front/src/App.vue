@@ -1,21 +1,26 @@
 <template>
   <div id="app">
-    <router-link to="/customers">お客様一覧</router-link><br>
-    <router-link to="/menus">メニュー一覧ページへ</router-link><br>
-    <router-link to="/orders">オーダー一覧ページへ</router-link><br> 
-    <router-link to="/categories">カテゴリー一覧ページへ</router-link><br>
-    <router-link to="/bill">お会計ページへ</router-link>
-    
-    <router-view />
+    <v-app>
+      <Header/>
+      <SideNav/>  
+      <router-view />
+      <Footer/>
+    </v-app>
   </div>
 </template>
 
 <script lang="js">
 import Vue from "vue";
+import SideNav from "./components/SideNav";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 export default Vue.extend({
   name: "App",
   components: {
+    SideNav,
+    Footer,
+    Header
   },
 });
 </script>

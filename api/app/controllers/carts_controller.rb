@@ -9,8 +9,9 @@ class CartsController < ApplicationController
   end
 
   def show
-    cart = Cart.find(params[:id])
-    render json: cart
+    cart = Cart.includes(:cart_details).find(params[:id])
+    # render json: cart
+    render json: { data: cart.as_json(include: :cart_details)}
   end
 
   def update
@@ -36,5 +37,4 @@ class CartsController < ApplicationController
     # params.require(:cart).permit(:name, :age, :sex, :memo)
     params.permit(:customer_id)
   end
-end
 end

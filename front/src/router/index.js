@@ -9,6 +9,7 @@ import MenuShow from "../views/MenuShow.vue";
 import MenuNew from "../views/MenuNew.vue";
 import MenuEdit from "../views/MenuEdit.vue";
 import Orders from "../views/Orders.vue";
+import NewBill from "../components/NewBill.vue";
 import Bill from "../views/Bill.vue";
 import Categories from "../views/Categories.vue";
 import CategoryShow from "../views/CategoryShow.vue";
@@ -80,6 +81,11 @@ export default new Router({
     //   name: "orders_edit",
     //   component: OrderEdit,
     // },
+    {
+      path: "/new_bill",
+      name: "new_bill",
+      component: NewBill,
+    },
     {
       path: "/bill",
       name: "bill",
