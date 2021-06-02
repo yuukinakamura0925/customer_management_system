@@ -6,8 +6,6 @@
   <v-btn @click="countDown(price)">-</v-btn>
   {{ count }}
 </div>
-  
-  
 </template>
 
 <script>
@@ -15,7 +13,7 @@ export default {
   props: ["name","price"],
   data() {
     return {
-      count: 0
+      count: 0,
     }
   },
   methods: {

@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Bill page</h1>
+    {{ cart }}
     <table>
       <thead>
         <tr>
@@ -20,8 +21,8 @@
           <td>
             <CountUpButton 
               @catchCount="calculationBill"
-              :name="menu.name"
-              :price="menu.price"
+              :name.sync="menu.name"
+              :price.sync="menu.price"
             />
             
           </td>
@@ -51,6 +52,8 @@ export default {
   data() {
     return {
       menus: null,
+      cusotmer: null,
+      cart:null,
       total: 0
     }
   },
@@ -66,6 +69,16 @@ export default {
           (this.menus = response.data)
         )
       );
+
+    const cartID = this.$route.params["cart_id"];
+    path = "http://localhost:3000/carts/" + cartID;
+    this.axios
+      .get(path)
+      .then(
+        response => (
+          (this.cart = response.data)
+        ),
+      );
   },
   methods: {
     calculationBill(menuPrice){
@@ -73,7 +86,7 @@ export default {
       if(this.total < 0){
         this.total = 0
       }
-    }
+    },
   }
 };
 </script>

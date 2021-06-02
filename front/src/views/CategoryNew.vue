@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     create() {
-      let path = "http://localhost:3000/customercategories"
+      let path = "http://localhost:3000/catgories"
       let params = {
         name: this.name,
       };
