@@ -3,7 +3,7 @@
     <v-app>
       <Header/>
       <SideNav/>  
-      <router-view />
+      <router-view/>
       <Footer/>
     </v-app>
   </div>

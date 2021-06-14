@@ -6,9 +6,6 @@
       {{ title }}
     </div>
     <v-spacer></v-spacer>
-    <v-toolbar-items>
-      <v-btn>ログアウト</v-btn>
-    </v-toolbar-items>
   </v-app-bar>
 </template>
 

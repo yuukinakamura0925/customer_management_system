@@ -1,36 +1,54 @@
 <template>
   <div>
     <h1>Bill page</h1>
-    {{ cart }}
-    <table>
-      <thead>
-        <tr>
-          <th >
-            MenuList
-          </th>
-          <th >
-            price
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          v-for="menu in menus"
-          :key="menu.id"
-        >
-          <td>
-            <CountUpButton 
-              @catchCount="calculationBill"
-              :name.sync="menu.name"
-              :price.sync="menu.price"
-            />
-            
-          </td>
-          <td>{{ menu.price }}</td>
-        </tr>
+    <div >
+      {{ cart }}
+    </div>
+    <div class="my-16">
+      <v-table>
+        <thead>
+          <tr>
+            <th> 
+              MenuList
+            </th>
+            <th >
+              Count
+            </th>
+            <th >
+              price
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="menu in menus"
+            :key="menu.id"
+          >
+            <td>
+              {{ menu.name }}
+            </td>
+            <td>
+              <!-- <CountUpButton 
+                @click="createCartDetail(menu.id,cart.id)"
+                @catchCount="calculationBill"
+                :name.sync="menu.name"
+                :price.sync="menu.price"
+              /> -->
+              <v-btn @click="createCartDetail(1,1)">+</v-btn>
+            </td>
+            <td>
+              {{ menu.price }}
+            </td>
+            <td>
+              <v-btn @click="cartDetailCreate">確定</v-btn>
+            </td>
+          </tr>
       </tbody>
-    </table>
-    <p>ご請求金額{{total}}円</p>
+      </v-table>
+    </div>
+    <p>1
+      ご請求金額{{total}}円
+    </p>
     <form>
       <p>
         お預かり：<input type="text" size="40">円
@@ -43,11 +61,11 @@
 </template>
 
 <script lang="js">
-import CountUpButton from "../components/CountUpButton";
+// import CountUpButton from "../components/CountUpButton";
 
 export default {
   components: {
-    CountUpButton,
+    // CountUpButton,
   },
   data() {
     return {
@@ -71,6 +89,7 @@ export default {
       );
 
     const cartID = this.$route.params["cart_id"];
+    // const cartID = 1;
     path = "http://localhost:3000/carts/" + cartID;
     this.axios
       .get(path)
@@ -87,6 +106,18 @@ export default {
         this.total = 0
       }
     },
+    createCartDetail(menuId,cartId){
+      alert(params)
+      let path = "http://localhost:3000/carts/" + cartId + "/cart_details"
+      let params = {
+        cart_id: cartId,
+        menu_id: menuId,
+        qty: 1
+      };
+      alert(params)
+      this.axios
+      .post(path, params)
+    }
   }
 };
 </script>

@@ -1,16 +1,13 @@
 <template>
 <div>
-  {{ name }}
-  
   <v-btn @click="countUp(price)">+</v-btn>
-  <v-btn @click="countDown(price)">-</v-btn>
-  {{ count }}
+  <!-- <v-btn @click="countDown(price)">-</v-btn> -->
 </div>
 </template>
 
 <script>
 export default {
-  props: ["name","price"],
+  props: ["name","price","cart_id","menu_id"],
   data() {
     return {
       count: 0,
@@ -22,15 +19,15 @@ export default {
       this.$emit('catchCount', price)
       console.log(this.count)
     },
-    countDown(price){
-      this.count--
-      if(this.count < 0){
-        this.count = 0
-        return
-      }
-      this.$emit('catchCount', -price)
-      console.log(this.count)
-    },
+    // countDown(price){
+    //   this.count--
+    //   if(this.count < 0){
+    //     this.count = 0
+    //     return
+    //   }
+    //   this.$emit('catchCount', -price)
+    //   console.log(this.count)
+    // },
   }
 }
 
