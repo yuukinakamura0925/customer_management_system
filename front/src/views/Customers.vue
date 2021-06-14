@@ -2,39 +2,41 @@
   <div>
     <h1>Customer list</h1>
     <v-btn  @click="$router.push({ name: 'customers_new'})">新規顧客登録</v-btn>
-    <table>
-      <thead>
-        <tr>
-          <th >
-            Name
-          </th>
-          <th >
-            Age
-          </th>
-          <th >
-            Sex
-          </th>
-          <th >
-            Memo
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          v-for="customer in customers"
-          :key="customer.id"
-        >
-          <td>{{ customer.name }}</td>
-          <td>{{ customer.age }}</td>
-          <td>{{ customer.sex }}</td>
-          <td>{{ customer.memo }}</td>
-          <td><v-btn  @click="$router.push({ name: 'customer', params: { id: customer.id } })">詳細</v-btn></td>
-          <td><v-btn  @click="$router.push({ name: 'customers_edit', params: { id: customer.id } })">編集</v-btn></td>
-          <td><v-btn  @click="deleteRecord(customer.id)">削除</v-btn></td>
-        </tr>
-  
-      </tbody>
-    </table>
+    <div>
+      <v-table>
+        <thead>
+          <tr>
+            <th >
+              Name
+            </th>
+            <th >
+              Age
+            </th>
+            <th >
+              Sex
+            </th>
+            <th >
+              Memo
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="customer in customers"
+            :key="customer.id"
+          >
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.age }}</td>
+            <td>{{ customer.sex }}</td>
+            <td>{{ customer.memo }}</td>
+            <td><v-btn  @click="$router.push({ name: 'customer', params: { id: customer.id } })">詳細</v-btn></td>
+            <td><v-btn  @click="$router.push({ name: 'customers_edit', params: { id: customer.id } })">編集</v-btn></td>
+            <td><v-btn  @click="deleteRecord(customer.id)">削除</v-btn></td>
+          </tr>
+    
+        </tbody>
+      </v-table>
+    </div>
   </div>
 </template>
 
