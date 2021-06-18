@@ -1,17 +1,36 @@
 class OrdersController < ApplicationController
 def create
-    order = Order.new(order_params)
-    puts order_params
-    puts order_params
-    puts order_params
-    puts order_params
-    puts order_params
-    
+    # カートを引っ張ってくる
+    cart = Cart.find(params[:cart_id])
+    customer_id = cart.customer_id
+    # カートディテールズ取得
+    cart_details = CartDetail.where(cart_id: cart.id)
+    # オーダーを登録する
+    order = Order.new
+    order.customer_id = customer_id
     if order.save
       render json: { status: "success", data: order }
+      # オーダーID取得
+      order_id = order.id
     else
       render json: { status: "error", data: order.errors }
     end
+    order_details = []
+    cart_details.each do |cart_detail|
+      order_detail = OrderDetail.new 
+      # オーダーディテールID取得
+      order_detail.order_id = order_id
+      order_detail.menu_id = cart_detail.menu_id
+      # order_detail.qty = cart_detail.qty
+      # order_detail.price = cart_detail.price   
+      order_details << order_detail
+    end
+    OrderDetail.import order_details
+    # if
+    # render json: { status: "success", data: order_detail }
+    # else
+    # render json: { status: "error", data: order.errors }
+    # end
   end
 
   def index
@@ -43,6 +62,10 @@ def create
   end
 
   private
+  def create_order_params
+    
+  end
+
   def order_params
     params.permit(:customer_id, :order_detail_id)
   end

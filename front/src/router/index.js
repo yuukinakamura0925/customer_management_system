@@ -87,7 +87,8 @@ export default new Router({
       component: NewBill,
     },
     {
-      path: "/bill",
+      // パスにidのパラメーターをもたせる。
+      path: "/bill/:cart_id",
       name: "bill",
       component: Bill,
     },
