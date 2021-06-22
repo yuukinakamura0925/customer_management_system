@@ -28,25 +28,16 @@ export default {
       .post(path, params)
       .then(
         response => (
-          (this.customer_id = response.data.data.id), // TODO
-
-          path = "http://localhost:3000/carts",
-          params = {
-            customer_id: this.customer_id
-          },
-          this.axios
-            .post(path, params)
-            .then(
-              response => (
-                (this.cart_id = response.data.data.id),
-                this.$router.push(
-                  { 
-                    name: "bill",
-                    params: {cart_id: this.cart_id}
-                  }
-                )
-              )
-            )
+          (this.cart_id = response.data.data), // TODO customerに修正  
+          alert(this.cart_id),
+          console.log(this.cart_id),
+          this.$router.push(
+            { 
+              name: "bill",
+              params: {cart_id: this.cart_id}
+            }
+          )
+              
             
         )
       )

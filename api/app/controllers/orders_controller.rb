@@ -9,7 +9,7 @@ def create
     order = Order.new
     order.customer_id = customer_id
     if order.save
-      render json: { status: "success", data: order }
+      # render json: { status: "success", data: order }
       # オーダーID取得
       order_id = order.id
     else
@@ -25,7 +25,11 @@ def create
       # order_detail.price = cart_detail.price   
       order_details << order_detail
     end
+    
     OrderDetail.import order_details
+    cart_details.destroy_all 
+    # そもそもコントローラーでフロントのコンポーネント遷移できるのか？フロントでやるべき？
+
     # if
     # render json: { status: "success", data: order_detail }
     # else

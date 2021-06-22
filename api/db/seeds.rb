@@ -4,11 +4,6 @@ Category.destroy_all
 Order.destroy_all
 OrderDetail.destroy_all
 
-customer1 = Customer.create!(name: "中村勇希", age: 29, sex: "男性", memo: "ハイボールはデュワーズで作る")
-customer2 = Customer.create!(name: "nakamura", age: 29, sex: "男性", memo: "ハイボールはデュワーズで作る")
-customer3 = Customer.create!(name: "yuuki", age: 29, sex: "男性", memo: "ハイボールはデュワーズで作る")
-customer4 = Customer.create!(name: "ナカムラ", age: 29, sex: "男性", memo: "ハイボールはデュワーズで作る")
-customer5 = Customer.create!(name: "ユウキ", age: 29, sex: "男性", memo: "ハイボールはデュワーズで作る")
 
 category1 = Category.create!(name: "ドリンク")
 category2 = Category.create!(name: "フード")

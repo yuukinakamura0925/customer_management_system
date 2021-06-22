@@ -1,5 +1,5 @@
 class Menu < ApplicationRecord
-  belongs_to :order_detail
-  belongs_to :cart_detail
-  belongs_to :category
+  belongs_to :order_detail, optional: true
+  belongs_to :cart_detail, optional: true
+  has_one :category
 end

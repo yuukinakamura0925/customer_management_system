@@ -30,7 +30,8 @@ export default {
       name: "",
       age: "",
       sex: "",
-      memo: ""
+      memo: "",
+      customer_id: 0
     }
   },
   methods: {  
@@ -44,7 +45,7 @@ export default {
       };
       alert(params.name)
       this.axios
-      .post(path, params)
+        .post(path, params)
     },
   }
 };

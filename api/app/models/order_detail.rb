@@ -1,4 +1,4 @@
 class OrderDetail < ApplicationRecord
-  belongs_to :order, optional: true
-  has_one :menu, optional: true
+  belongs_to :order
+  has_one :menu
 end

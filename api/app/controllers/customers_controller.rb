@@ -2,15 +2,23 @@ class CustomersController < ActionController::API
   def create
     customer = Customer.new(customer_params)
     if customer.save
-      render json: { status: "success", data: customer }
+      customer_id = customer.id
+    else
+      render json: { status: "error", data: customer.errors }
+    end
+    cart = Cart.new
+    cart.customer_id = customer_id
+    if cart.save
+      # render json: { status: "success", data: customer } TODO include
+      render json: { status: "success", data: cart.id }
     else
       render json: { status: "error", data: customer.errors }
     end
   end
 
   def index
-    customers = Customer.all
-    render json: customers
+    customers = Customer.includes(:cart).all
+    render json: customers.as_json(include: :cart)
   end
 
   def show

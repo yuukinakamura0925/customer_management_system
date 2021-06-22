@@ -34,7 +34,7 @@
                 :name.sync="menu.name"
                 :price.sync="menu.price"
               /> -->
-              <v-btn @click="createCartDetail(menu.id,cart.id)">+</v-btn>
+              <v-btn @click="createCartDetail(menu.id,cart.id,menu.price)">+</v-btn>
             </td>
             <td>
               {{ menu.price }}
@@ -100,7 +100,7 @@ export default {
   data() {
     return {
       menus: null,
-      cusotmer: null,
+      customer: null,
       cart:null,
       total: 0,
       orderID: 0
@@ -137,12 +137,13 @@ export default {
         this.total = 0
       }
     },
-    createCartDetail(menuId,cartId){
+    createCartDetail(menuId,cartId,menuPrice){
       let path = "http://localhost:3000/carts/" + cartId + "/cart_details"
       let params = {
         cart_id: cartId,
         menu_id: menuId,
-        qty: 1
+        qty: 1,
+        price: menuPrice
       };
       this.axios
       .post(path, params)
@@ -157,6 +158,7 @@ export default {
     },
     // 二回ポストせず、cart_idで全部送ってordersコントローラーでorder_detailsのデータも一気にcreateする処理をかく。NewBillのcustomerとcartも同じように一回のFrontからのpostで処理する。
     orderCreate(){ 
+      alert("テスト用、カートidを次にアラート")
       alert(this.cart.id)
       let path = "http://localhost:3000/orders/";
       let params = {

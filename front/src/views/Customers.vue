@@ -2,7 +2,7 @@
   <div>
     <h1>Customer list</h1>
     <v-btn  @click="$router.push({ name: 'customers_new'})">新規顧客登録</v-btn>
-    <div>
+    <div class="my-16">
       <v-table>
         <thead>
           <tr>
@@ -18,6 +18,12 @@
             <th >
               Memo
             </th>
+            <th>
+              Select button
+            </th>
+            <th>
+              Bill button
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -29,9 +35,15 @@
             <td>{{ customer.age }}</td>
             <td>{{ customer.sex }}</td>
             <td>{{ customer.memo }}</td>
-            <td><v-btn  @click="$router.push({ name: 'customer', params: { id: customer.id } })">詳細</v-btn></td>
-            <td><v-btn  @click="$router.push({ name: 'customers_edit', params: { id: customer.id } })">編集</v-btn></td>
-            <td><v-btn  @click="deleteRecord(customer.id)">削除</v-btn></td>
+            <td>
+              <v-btn  @click="$router.push({ name: 'customer', params: { id: customer.id } })">詳細</v-btn>
+              <v-btn  @click="$router.push({ name: 'customers_edit', params: { id: customer.id } })">編集</v-btn>
+              <v-btn  @click="deleteRecord(customer.id)">削除</v-btn>
+            </td>
+              <v-btn  @click="$router.push({ name: 'bill', params: { cart_id: customer.cart.id } })">会計へ</v-btn>
+            <td>
+
+            </td>
           </tr>
     
         </tbody>
