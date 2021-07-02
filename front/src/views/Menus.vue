@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Menu list</h1>
+    <h1>メニュー  一覧</h1>
     <div>
       <v-btn  @click="$router.push({ name: 'menus_new'})">新規メニュー登録</v-btn>
     </div>
@@ -9,10 +9,10 @@
         <thead>
           <tr>
             <th >
-              Name
+              メニュー名
             </th>
             <th >
-              price
+              値段
             </th>
           </tr>
         </thead>

@@ -9,21 +9,14 @@ class CartsController < ApplicationController
   end
 
   def show
+    # Billでcart_detailsをひっぱってくるためのincludes
+    puts "test"
+    puts params[:id]
+    puts params[:cart_id]
     cart = Cart.includes(:cart_details).find(params[:id])
     # render json: cart
     render json: { data: cart.as_json(include: :cart_details)}
 
-    # cart_details = cart2.as_json(
-    #   include: {
-    #     cart_details: {
-    #       include: {
-    #         menu: {}
-    #       }
-    #     }
-    #   }
-    # )
-
-    # render json: { data: cart_details}
   end
 
   def update

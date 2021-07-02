@@ -9,8 +9,7 @@ class CustomersController < ActionController::API
     cart = Cart.new
     cart.customer_id = customer_id
     if cart.save
-      # render json: { status: "success", data: customer } TODO include
-      render json: { status: "success", data: cart.id }
+      render json: { status: "success", data: customer }
     else
       render json: { status: "error", data: customer.errors }
     end
@@ -22,8 +21,8 @@ class CustomersController < ActionController::API
   end
 
   def show
-    customer = Customer.find(params[:id])
-    render json: customer
+    customer = Customer.includes(:cart).find(params[:id])
+    render json: customer.as_json(include: :cart)
   end
 
   def update

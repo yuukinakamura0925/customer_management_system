@@ -1,8 +1,7 @@
 <template>
   <div id="app">
     <v-app>
-      <Header/>
-      <SideNav/>  
+      <Header/> 
       <router-view/>
       <Footer/>
     </v-app>
@@ -11,14 +10,12 @@
 
 <script lang="js">
 import Vue from "vue";
-import SideNav from "./components/SideNav";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
 export default Vue.extend({
   name: "App",
   components: {
-    SideNav,
     Footer,
     Header
   },

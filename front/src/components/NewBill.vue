@@ -28,17 +28,13 @@ export default {
       .post(path, params)
       .then(
         response => (
-          (this.cart_id = response.data.data), // TODO customerに修正  
-          alert(this.cart_id),
-          console.log(this.cart_id),
+          (this.customer = response.data.data), // TODO customerに修正  
           this.$router.push(
             { 
               name: "bill",
-              params: {cart_id: this.cart_id}
+              params: {customer_id: this.customer.id}
             }
-          )
-              
-            
+          )  
         )
       )
   

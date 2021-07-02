@@ -6,7 +6,7 @@
         名前：<input type="text" v-model="name" size="40">
       </p>
       <p>
-      <input type="submit" value="登録" @click="create">
+      <v-btn  @click="create">登録</v-btn>
       </p>
     </form>  
   </div>
@@ -23,13 +23,17 @@ export default {
   },
   methods: {
     create() {
-      let path = "http://localhost:3000/catgories"
+      let path = "http://localhost:3000/categories"
       let params = {
         name: this.name,
       };
       alert(params.name)
       this.axios
-      .post(path, params)
+        .post(path, params)
+      this.$router.push(
+        { name: "categories"}
+      )
+      location.reload();
     },
   }
 };

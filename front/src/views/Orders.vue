@@ -1,7 +1,6 @@
 <template>
   <div>
     <h1>Order list</h1>
-    <v-btn  @click="$router.push({ name: 'bill'})">お会計へ</v-btn>
     <v-container>
       <table>
         <thead>

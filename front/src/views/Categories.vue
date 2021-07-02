@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h1>Category list</h1>
+    <h1>カテゴリーリスト</h1>
     <v-btn @click="$router.push({ name: 'categories_new'})">カテゴリー登録</v-btn>
-    <div>
-      <table>
+    <div  class="my-16">
+      <v-table>
         <thead>
           <tr>
             <th >
-              Category Name
+              カテゴリー名
             </th>
           </tr>
         </thead>
@@ -23,7 +23,7 @@
           </tr>
     
         </tbody>
-      </table>
+      </v-table>
     </div>
   </div>
 </template>

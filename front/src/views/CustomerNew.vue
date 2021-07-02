@@ -46,6 +46,10 @@ export default {
       alert(params.name)
       this.axios
         .post(path, params)
+      this.$router.push(
+        {  name: "customers"}
+      )
+      location.reload();
     },
   }
 };

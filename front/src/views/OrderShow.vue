@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>顧客情報</h1>
+    <h1>オーダー詳細</h1>
     <form>
       <p>
         名前：{{ customer.name }}

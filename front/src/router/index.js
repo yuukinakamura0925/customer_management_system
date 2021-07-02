@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
+import Home from "../views/Home.vue";
 import Customers from "../views/Customers.vue";
 import CustomerShow from "../views/CustomerShow.vue";
 import CustomerNew from "../views/CustomerNew.vue";
@@ -9,6 +10,7 @@ import MenuShow from "../views/MenuShow.vue";
 import MenuNew from "../views/MenuNew.vue";
 import MenuEdit from "../views/MenuEdit.vue";
 import Orders from "../views/Orders.vue";
+import OrderShow from "../views/OrderShow.vue";
 import NewBill from "../components/NewBill.vue";
 import Bill from "../views/Bill.vue";
 import Categories from "../views/Categories.vue";
@@ -21,6 +23,11 @@ Vue.use(Router);
 export default new Router({
   mode: "history",
   routes: [
+    {
+      path: "/home",
+      name: "home",
+      component: Home,
+    },
     {
       path: "/customers",
       name: "customers",
@@ -66,11 +73,11 @@ export default new Router({
       name: "orders",
       component: Orders,
     },
-    // {
-    //   path: "/orders/:id",
-    //   name: "order",
-    //   component: OrderShow,
-    // },
+    {
+      path: "/orders/:id",
+      name: "order",
+      component: OrderShow,
+    },
     // {
     //   path: "/orders_new",
     //   name: "orders_new",
@@ -88,7 +95,7 @@ export default new Router({
     },
     {
       // パスにidのパラメーターをもたせる。
-      path: "/bill/:cart_id",
+      path: "/bill/:customer_id",
       name: "bill",
       component: Bill,
     },
