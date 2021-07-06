@@ -1,23 +1,55 @@
 <template>
   <div>
     <h1>New customer form </h1>
-    <form>
-      <p>
-        名前：<input type="text" v-model="name" size="40">
-      </p>
-      <p>
-        年齢：<input type="text" v-model="age" size="40">
-      </p>
-      <p>
-        性別：<input type="text" v-model="sex" size="40">
-      </p>
-      <p>
-        メモ：<input type="text" v-model="memo" size="40">
-      </p>
-      <p>
-      <input type="submit" value="登録" @click="create">
-      </p>
-    </form>  
+    <v-form>
+      <v-container>
+        <p>
+          <v-text-field
+              v-model="name"
+              :counter="20"
+              :rules="[v => !!v || 'メニュー名を入力してください']"
+              label="顧客名を入力"
+              required
+          ></v-text-field>
+        </p>
+        <p>
+          <v-text-field
+              v-model="age"
+              :counter="10"
+              :rules="[v => !!v || '年齢を入力してください']"
+              label="年齢を入力"
+              required
+          ></v-text-field>
+        </p>
+        <p>
+          <v-text-field
+              v-model="sex"
+              :counter="10"
+              :rules="[v => !!v || '性別入力してください']"
+              label="性別を入力"
+              required
+          ></v-text-field>
+        </p>
+        <p>
+          <v-text-field
+              v-model="memo"
+              :counter="30"
+              label="メモを入力"
+              required
+          ></v-text-field>
+        </p>
+        <p>
+          <v-btn  @click="create">登録</v-btn>
+        </p>
+        <p>
+          <v-btn
+           @click="$router.push({ name: 'customers'})"
+          >
+           一覧ページに戻る
+          </v-btn>
+        </p>
+      </v-container>
+    </v-form>  
   </div>
 </template>
 

@@ -43,8 +43,13 @@ def create
   end
 
   def show
-    order = Order.find(params[:id])
-    render json: order
+    # Billでcart_detailsをひっぱってくるためのincludes
+    order = Order.includes(:order_details).find(params[:id])
+    # render json: order
+    render json: { data: order.as_json(include: :order_details)}
+
+    # order = Order.find(params[:id])
+    # render json: order
   end
 
   def update

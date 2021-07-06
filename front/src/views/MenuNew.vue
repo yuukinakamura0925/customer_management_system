@@ -1,25 +1,24 @@
 <template>
   <div>
     <h1>New menu form </h1>
-  <v-form v-model="valid">
-    <v-container>
-      <v-text-field
-        v-model="name"
-        :counter="10"
-        :rules="[v => !!v || 'メニュー名を入力してください']"
-        label="menu name"
-        required
-      ></v-text-field>
-      <v-text-field
-        v-model="price"
-        :counter="10"
-        :rules="[v => !!v || '値段を入力してください']"
-        label="Price"
-        required
-      ></v-text-field>
+    <v-form v-model="valid">
+      <v-container>
+        <v-text-field
+          v-model="name"  
+          :rules="[v => !!v || 'メニュー名を入力してください']"
+          label="menu name"
+          required
+        ></v-text-field>
+        <v-text-field
+          v-model="price"
+          :counter="10"
+          :rules="[v => !!v || '値段を入力してください']"
+          label="Price"
+          required
+        ></v-text-field>
 
-    </v-container>
-  </v-form>
+      </v-container>
+    </v-form>
     <form>
       <p>
         <select v-model="category_id">
@@ -31,6 +30,13 @@
       </p>
       <p>
         <v-btn  @click="create">登録</v-btn>
+      </p>
+      <p>
+        <v-btn
+          @click="$router.push({ name: 'menus'})"
+        >
+          一覧ページに戻る
+        </v-btn>
       </p>
     </form>  
   </div>

@@ -1,42 +1,42 @@
 <template>
   <div>
     <h1>顧客情報</h1>
-    <form>
-      <p>
-        名前：{{ customer.name }}
-      </p>
-      <p>
-        年齢：{{ customer.age }}
-        
-      </p>
-      <p>
-        性別：{{ customer.sex }}
-      </p>
-      <p>
-        メモ：{{ customer.memo }}
-      </p>
-      
-      <p>
-        <v-btn    
-        class="mr-4"
-        @click="$router.push({ name: 'customers_edit', params: { id: customer.id } })"
-        >
-        編集
-        </v-btn>
+    <div class="my-16">
+      <v-simple-table class="table_form">
+      <thead>
+        <tr>
+          <th >
+            氏名
+          </th>
+          <th >
+            年齢
+          </th>
+          <th >
+            性別
+          </th>
+          <th >
+            特記事項
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-left">{{ customer.name }}</td>
+          <td class="text-left">{{ customer.age }}</td>
+          <td class="text-left">{{ customer.sex }}</td>
+          <td class="text-left">{{ customer.memo }}</td>
+        </tr>
+
+      </tbody>
+    </v-simple-table>
+      <p class="my-16">
         <v-btn
-        class="mr-4"
-        @click="create"
+          @click="$router.push({ name: 'customers'})"
         >
-        登録
-        </v-btn>
+          一覧ページに戻る
+        </v-btn> 
       </p>
-        <v-btn
-        class="mr-4"
-        @click="$router.push({ name: 'customers'})"
-        >
-        一覧ページに戻る
-        </v-btn>
-    </form>  
+    </div>
   </div>
 </template>
 
@@ -60,19 +60,6 @@ export default {
         )
       );
   },
-  // methods: {
-  //   create() {
-  //     let path = "http://localhost:3000/customers"
-  //     this.axios
-  //     .post(path,params)
-  //   },
-  //   delete() {
-  //     const id = this.$route.params["id"];
-  //     let path = "http://localhost:3000/customers/" + id;
-  //     this.axios
-  //     .delete(path)
-  //   },
-    
-  // }
+ 
 };
 </script>

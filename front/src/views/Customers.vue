@@ -2,11 +2,11 @@
   <div>
     <h1>顧客リスト</h1>
     <v-btn  @click="$router.push({ name: 'customers_new'})">新規顧客登録</v-btn>
-    <div class="first">
-      <v-text-field type="text" v-model="keyword" label="顧客検索" ></v-text-field>
+    <div class="serch_box">
+      <v-text-field type="text" v-model="keyword" label="顧客名検索" ></v-text-field>
     </div>
     <div class="my-16">
-      <v-table>
+      <v-simple-table class="table_form">
         <thead>
           <tr>
             <th >
@@ -34,23 +34,22 @@
             v-for="customer in filteredCustomers"
             :key="customer.id"
           >
-            <td>{{ customer.name }}</td>
-            <td>{{ customer.age }}</td>
-            <td>{{ customer.sex }}</td>
-            <td>{{ customer.memo }}</td>
-            <td>
+            <td class="text-left">{{ customer.name }}</td>
+            <td class="text-left">{{ customer.age }}</td>
+            <td class="text-left">{{ customer.sex }}</td>
+            <td class="text-left">{{ customer.memo }}</td>
+            <td class="text-left">
               <v-btn  @click="$router.push({ name: 'customer', params: { id: customer.id } })">詳細</v-btn>
               <v-btn  @click="$router.push({ name: 'customers_edit', params: { id: customer.id } })">編集</v-btn>
               <v-btn  @click="deleteRecord(customer.id)">削除</v-btn>
             </td>
+            <td class="text-left">
               <v-btn  @click="$router.push({ name: 'bill', params: { customer_id: customer.id } })">会計へ</v-btn>
-            <td>
-
             </td>
           </tr>
     
         </tbody>
-      </v-table>
+      </v-simple-table>
     </div>
   </div>
 </template>
@@ -101,7 +100,7 @@ export default {
 };
 </script>
 <style>
-  .first {
+  .serch_box {
     width: 400px !important;
     margin:0 auto;
   }

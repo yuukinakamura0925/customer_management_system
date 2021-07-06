@@ -1,38 +1,22 @@
 <template>
   <div>
-    <h1>オーダー詳細</h1>
+    <h1>顧客情報</h1>
     <form>
       <p>
-        名前：{{ customer.name }}
+        名前：{{ order.customer_id }}
       </p>
       <p>
-        年齢：{{ customer.age }}
-        
+        お会計日時：{{ order.created_at }}
       </p>
       <p>
-        性別：{{ customer.sex }}
+        オーダー詳細：{{ order.order_details}}
       </p>
-      <p>
-        メモ：{{ customer.memo }}
-      </p>
+     
+     
       
-      <p>
-        <v-btn    
-        class="mr-4"
-        @click="$router.push({ name: 'customers_edit', params: { id: customer.id } })"
-        >
-        編集
-        </v-btn>
         <v-btn
         class="mr-4"
-        @click="create"
-        >
-        登録
-        </v-btn>
-      </p>
-        <v-btn
-        class="mr-4"
-        @click="$router.push({ name: 'customers'})"
+        @click="$router.push({ name: 'orders'})"
         >
         一覧ページに戻る
         </v-btn>
@@ -46,33 +30,20 @@ export default {
   },
   data() {
     return {
-      customer: null
+      order: null,
     }
   },
   created() {
     const id = this.$route.params["id"];
-    let path = "http://localhost:3000/customers/" + id;
+    let path = "http://localhost:3000/orders/" + id;
     this.axios
       .get(path)
       .then(
         response => (
-          (this.customer = response.data)
+          (this.order = response.data.data)
         )
       );
   },
-  // methods: {
-  //   create() {
-  //     let path = "http://localhost:3000/customers"
-  //     this.axios
-  //     .post(path,params)
-  //   },
-  //   delete() {
-  //     const id = this.$route.params["id"];
-  //     let path = "http://localhost:3000/customers/" + id;
-  //     this.axios
-  //     .delete(path)
-  //   },
-    
-  // }
+ 
 };
 </script>

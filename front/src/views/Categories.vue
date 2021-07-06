@@ -3,11 +3,14 @@
     <h1>カテゴリーリスト</h1>
     <v-btn @click="$router.push({ name: 'categories_new'})">カテゴリー登録</v-btn>
     <div  class="my-16">
-      <v-table>
+      <v-simple-table class="table_form">
         <thead>
           <tr>
             <th >
               カテゴリー名
+            </th>
+            <th>
+              
             </th>
           </tr>
         </thead>
@@ -16,14 +19,16 @@
             v-for="category in categories"
             :key="category.id"
           >
-            <td>{{ category.name }}</td>
-            <td><v-btn  @click="$router.push({ name: 'category', params: { id: category.id } })">詳細</v-btn></td>
-            <td><v-btn  @click="$router.push({ name: 'categories_edit', params: { id: category.id } })">編集</v-btn></td>
-            <td><v-btn  @click="deleteRecord(category.id)">削除</v-btn></td>
+            <td class="text-left">{{ category.name }}</td>
+            <td class="text-right">
+              <v-btn  @click="$router.push({ name: 'category', params: { id: category.id } })">詳細</v-btn>
+              <v-btn  @click="$router.push({ name: 'categories_edit', params: { id: category.id } })">編集</v-btn>
+              <v-btn  @click="deleteRecord(category.id)">削除</v-btn>
+            </td>
           </tr>
     
         </tbody>
-      </v-table>
+      </v-simple-table>
     </div>
   </div>
 </template>

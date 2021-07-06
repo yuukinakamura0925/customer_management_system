@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h1>Customer edit</h1>
-    <form>
+    <h1>顧客編集ページ</h1>
+    <v-form>
       <v-container>
         <p>
           <v-text-field
             v-model="customer.name"
-            :counter="10"
+            :counter="20"
             :rules="[v => !!v || 'メニュー名を入力してください']"
             label="名前を編集できます"
             required
@@ -34,15 +34,21 @@
           <v-text-field
             v-model="customer.memo"
             :counter="10"
-            :rules="[v => !!v || 'メニュー名を入力してください']"
             label="メモを編集できます"
             required
           ></v-text-field>
         <p>
           <v-btn  @click="update">編集</v-btn>
         </p>
+        <p>
+          <v-btn
+           @click="$router.push({ name: 'customers'})"
+          >
+           一覧ページに戻る
+          </v-btn>
+        </p>
       </v-container>
-    </form>  
+    </v-form>  
   </div>
 </template>
 

@@ -53,7 +53,7 @@
   export default {
     data() {
       return {
-        title: "CUSTOMER MANAGEMENT SYSTEM APP",
+        title: "CUSTOMER MANAGEMENT SYSTEM",
         drawer: false,
         items: [
         { title: "顧客登録", icon: "mdi-forum", link: "customers" },

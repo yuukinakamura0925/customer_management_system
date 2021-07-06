@@ -10,7 +10,7 @@
     <h2 class="mt-8">メニュー一覧</h2>
     
     <div class="my-8">
-      <v-simple-table class="menu_table">
+      <v-simple-table class="table_form">
         <thead>
           <tr>
             <th> 
@@ -44,7 +44,7 @@
     </div>
     <h2>お会計カート</h2>
     <div class="my-8">
-      <v-simple-table class="menu_table">
+      <v-simple-table class="table_form">
         <thead>
           <tr>
             <th> 
@@ -152,7 +152,12 @@ export default {
         }
       }
     };
-  
+    // alert("for文前")
+    // for (let i = 0; i < cart_details.length; i++) {
+    //   this.total += cart_details[i].price
+    //   alert(this.total)
+    // };
+    
   },
 
   methods: {
@@ -197,8 +202,8 @@ export default {
 };
 </script>
 <style>
-  .menu_table {
-    width: 900px ;
+  .table_form {
     margin: 0 auto;
+    max-width: 900px;
   }
 </style>
