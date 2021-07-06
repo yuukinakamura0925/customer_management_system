@@ -10,6 +10,9 @@
         <thead>
           <tr>
             <th >
+              顧客ID
+            </th>
+            <th >
               氏名
             </th>
             <th >
@@ -34,6 +37,7 @@
             v-for="customer in filteredCustomers"
             :key="customer.id"
           >
+            <td class="text-left">{{ customer.id }}</td>
             <td class="text-left">{{ customer.name }}</td>
             <td class="text-left">{{ customer.age }}</td>
             <td class="text-left">{{ customer.sex }}</td>

@@ -77,11 +77,17 @@
       <div>
         <p>ご請求金額{{total}}円</p>
         <v-text-field
+          v-model="deposit"
           label="お預かり金額"
           :rules="rules"
           hide-details="auto"
         ></v-text-field>
-        <p>おつり{{total}}円</p>
+        <div v-if="(deposit - total)<=0">
+          <p>おつり0円</p>
+        </div>
+        <div v-else>
+          <p>おつり{{deposit - total}}円</p>
+        </div>
         <v-btn  @click="orderCreate()">お会計確定</v-btn>
       </div>
     </div>
@@ -93,7 +99,6 @@
 
 export default {
   components: {
-    // CountUpButton,
   },
   data() {
     return {
@@ -101,7 +106,8 @@ export default {
       customer: null,
       cart:null,
       total: 0,
-      orderID: 0
+      orderID: 0,
+      deposit: 0
     }
   },
   filters: {
@@ -152,21 +158,15 @@ export default {
         }
       }
     };
-    // alert("for文前")
-    // for (let i = 0; i < cart_details.length; i++) {
-    //   this.total += cart_details[i].price
-    //   alert(this.total)
-    // };
-    
+  
+    let total = 0
+    for (let i = 0; i < cart_details.length; i++) {
+      total += cart_details[i].price
+    };
+    this.total = total
   },
 
   methods: {
-    calculationBill(menuPrice){
-      this.total += menuPrice
-      if(this.total < 0){
-        this.total = 0
-      }
-    },
     createCartDetail(menuId,cartId,menuPrice){
       let path = "http://localhost:3000/carts/" + cartId + "/cart_details"
       let params = {
@@ -192,11 +192,16 @@ export default {
       let path = "http://localhost:3000/orders/";
       let params = {
         cart_id: this.cart.id,
+        
       };
       this.axios
       .post(path, params)
       location.reload();
     },
+    calculationBill(){
+      this.deposit - this.total
+    },
+
   }
   
 };

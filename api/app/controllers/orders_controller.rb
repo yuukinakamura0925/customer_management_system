@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
 def create
+    menus = Menu.all
     # カートを引っ張ってくる
     cart = Cart.find(params[:cart_id])
     customer_id = cart.customer_id
@@ -18,11 +19,17 @@ def create
     order_details = []
     cart_details.each do |cart_detail|
       order_detail = OrderDetail.new 
+        
       # オーダーディテールID取得
       order_detail.order_id = order_id
-      order_detail.menu_id = cart_detail.menu_id
+      order_detail.menu_price = cart_detail.price 
       # order_detail.qty = cart_detail.qty
-      # order_detail.price = cart_detail.price   
+      menus.each do |menu|
+        if menu.id == cart_detail.menu_id
+          order_detail.menu_name = menu.name
+        end
+      end
+        
       order_details << order_detail
     end
     
