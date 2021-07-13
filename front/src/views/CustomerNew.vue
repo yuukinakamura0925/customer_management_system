@@ -1,55 +1,31 @@
 <template>
   <div>
-    <h1>New customer form </h1>
-    <v-form>
-      <v-container>
-        <p>
-          <v-text-field
-              v-model="name"
-              :counter="20"
-              :rules="[v => !!v || 'メニュー名を入力してください']"
-              label="顧客名を入力"
-              required
-          ></v-text-field>
-        </p>
-        <p>
-          <v-text-field
-              v-model="age"
-              :counter="10"
-              :rules="[v => !!v || '年齢を入力してください']"
-              label="年齢を入力"
-              required
-          ></v-text-field>
-        </p>
-        <p>
-          <v-text-field
-              v-model="sex"
-              :counter="10"
-              :rules="[v => !!v || '性別入力してください']"
-              label="性別を入力"
-              required
-          ></v-text-field>
-        </p>
-        <p>
-          <v-text-field
-              v-model="memo"
-              :counter="30"
-              label="メモを入力"
-              required
-          ></v-text-field>
-        </p>
-        <p>
-          <v-btn  @click="create">登録</v-btn>
-        </p>
-        <p>
-          <v-btn
-           @click="$router.push({ name: 'customers'})"
-          >
-           一覧ページに戻る
-          </v-btn>
-        </p>
-      </v-container>
-    </v-form>  
+    <v-container text-xs-center>
+      <v-layout row wrap justify-center>
+        <v-flex xs12 class="text-center">
+          <h1>New customer form</h1>
+        </v-flex>
+
+        <v-flex xs5 mt-5>
+          <v-card>
+            <v-card-text>
+              <v-form>
+                <v-text-field v-model="name" :counter="20" :rules="[v => !!v || '顧客名を入力してください']" label="顧客名" required ></v-text-field>
+                <v-text-field v-model="age" :counter="20"  label="年齢"></v-text-field>
+                <v-text-field v-model="sex" :counter="20" label="性別"></v-text-field>
+                <v-text-field v-model="memo" :counter="20" label="メモ"></v-text-field>
+                <div class="text-center">
+                  <v-btn @click="$router.push({ name: 'customers' })">キャンセル</v-btn>
+                  <v-btn color="info" class="ml-2" @click="create">保存</v-btn>
+                </div>
+                
+              </v-form>
+            </v-card-text>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
+      
   </div>
 </template>
 

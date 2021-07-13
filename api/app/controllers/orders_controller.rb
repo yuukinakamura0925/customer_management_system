@@ -35,13 +35,6 @@ def create
     
     OrderDetail.import order_details
     cart_details.destroy_all 
-    # そもそもコントローラーでフロントのコンポーネント遷移できるのか？フロントでやるべき？
-
-    # if
-    # render json: { status: "success", data: order_detail }
-    # else
-    # render json: { status: "error", data: order.errors }
-    # end
   end
 
   def index
@@ -50,13 +43,8 @@ def create
   end
 
   def show
-    # Billでcart_detailsをひっぱってくるためのincludes
     order = Order.includes(:order_details).find(params[:id])
-    # render json: order
     render json: { data: order.as_json(include: :order_details)}
-
-    # order = Order.find(params[:id])
-    # render json: order
   end
 
   def update

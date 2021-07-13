@@ -187,8 +187,6 @@ export default {
         location.reload();
     },
     orderCreate(){ 
-      alert("テスト用、カートidを次にアラート")
-      alert(this.cart.id)
       let path = "http://localhost:3000/orders/";
       let params = {
         cart_id: this.cart.id,

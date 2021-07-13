@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>カテゴリーリスト</h1>
-    <v-btn @click="$router.push({ name: 'categories_new'})">カテゴリー登録</v-btn>
+    <v-btn  @click="$router.push({ name: 'categories_new'})">カテゴリー登録</v-btn>
     <div  class="my-16">
       <v-simple-table class="table_form">
         <thead>

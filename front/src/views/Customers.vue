@@ -54,6 +54,12 @@
     
         </tbody>
       </v-simple-table>
+      <v-pagination
+        v-model="page"
+        :length="4"
+        @input = "pageChange"
+        circle
+      ></v-pagination>
     </div>
   </div>
 </template>
@@ -64,22 +70,36 @@ export default {
   },
   data() {
     return {
-      keyword: '',
-      customers: null
+      keyword:'',
+      customers: null,
+      page: 1,
+      displayLists: [],
+      pageSize: 20,
+      headers: [
+        { text: '顧客ID', value: 'id' },
+        { text: '氏名', value: 'name' },
+        { text: '年齢', value: 'age' },
+        { text: '性別', value: 'sex' },
+        { text: 'メモ', value: 'memo' },
+        { text: 'Select buttons', value: 'buttons' },
+        { text: 'お会計ページ', value: 'bill' }
+      ],
     }
   },
   computed: {
     // 検索窓の絞り込み 
     filteredCustomers: function() {
        var customers = [];
-    for(var i in this.customers) {
-        var customer = this.customers[i];
+    for(var i in this.displayLists) {
+        var customer = this.displayLists[i]; 
         if(customer.name.indexOf(this.keyword) !== -1) {
             customers.push(customer);
         }
     }
-    return customers;
+    return customers
+    // return customers.slice().reverse(); 昇順反転
     }
+    
   },
   created() {
     let path = "http://localhost:3000/customers";
@@ -87,7 +107,8 @@ export default {
       .get(path)
       .then(
         response => (
-          (this.customers = response.data)
+          (this.customers = response.data),
+          this.displayLists = this.customers.slice(0,this.pageSize)
         )
       );
   },
@@ -99,6 +120,9 @@ export default {
         .delete(path)
         location.reload();
       }
+    },
+    pageChange: function(pageNumber){
+      this.displayLists = this.customers.slice(this.pageSize*(pageNumber -1), this.pageSize*(pageNumber));
     },
   }
 };

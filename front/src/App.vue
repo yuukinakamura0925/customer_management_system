@@ -1,24 +1,31 @@
 <template>
   <div id="app">
     <v-app>
-      <Header/> 
+      <Header/>
+      <SideNav/>
       <router-view/>
-      <Footer/>
+      <!-- <Footer/> -->
     </v-app>
   </div>
 </template>
 
 <script lang="js">
 import Vue from "vue";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import Header from "./components/Header";
-
+import SideNav from "./components/SideNav";
 export default Vue.extend({
   name: "App",
   components: {
-    Footer,
-    Header
+    // Footer,
+    Header,
+    SideNav
   },
+  data(){
+    return {
+        
+    }
+  }
 });
 </script>
 

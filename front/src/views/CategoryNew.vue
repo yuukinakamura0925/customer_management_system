@@ -44,7 +44,6 @@ export default {
       let params = {
         name: this.name,
       };
-      alert(params.name)
       this.axios
         .post(path, params)
       this.$router.push(

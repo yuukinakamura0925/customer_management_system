@@ -6,7 +6,7 @@
         <thead>
           <tr>
             <th >
-              顧客（id・名前）
+              顧客id
             </th>
             <th >
               お会計日時
@@ -15,9 +15,12 @@
         </thead>
         <tbody>
           <tr>
-            <td class="text-left">{{ order.customer_id }}</td>
+            <td class="text-left">
+              <v-btn  @click="$router.push({ name: 'customer', params: { id: order.customer_id } })">
+                {{ order.customer_id }}
+              </v-btn>
+            </td>
             <td class="text-left">{{ order.created_at }}</td>
-            <!-- <td class="text-left">{{ order.order_details }}</td> -->
           </tr>
         </tbody>
       </v-simple-table>
@@ -64,6 +67,7 @@ export default {
   data() {
     return {
       order: null,
+      customers: null,
     }
   },
   created() {
@@ -85,6 +89,41 @@ export default {
           (this.menus = response.data)
         ),
       );
+    path = "http://localhost:3000/customers";
+    this.axios
+      .get(path)
+      .then(
+        response => (
+          (this.customers = response.data)
+        ),
+      );
+
+       // customer.nameを表示させる処理
+    let order = this.order
+    // alert(order.customer_id)
+    let customers = this.customers
+    // alert(customers)
+    for (let i = 0; i < customers.length; i++) {
+      alert(customers[i].id)
+      if (order.customer_id == customers[i].id) {
+        // order_idにcustomer.nameを格納 
+        order.customer_id = customers[i].name
+      }
+    };
   },
+  // updated(){
+  //   // TODO なぜかランダムでidの時と名前の時がある
+  //   // customer.nameを表示させる処理
+  //   let order = this.order
+  //   // alert(order.customer_id)
+  //   let customers = this.customers
+  //   // alert(customers)
+  //   for (let i = 0; i < customers.length; i++) {
+  //     if (order.customer_id == customers[i].id) {
+  //       // order_idにcustomer.nameを格納 
+  //       order.customer_id = customers[i].name
+  //     }
+  //   };
+  // },
 };
 </script>
