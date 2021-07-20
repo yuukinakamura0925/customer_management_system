@@ -1,49 +1,38 @@
 <template>
   <div>
-    <h1>Menu edit</h1>
-    <v-form>
-      <v-container>
-        <p>
-          <v-text-field
-              v-model="menu.name"
-              :counter="10"
-              :rules="[v => !!v || 'メニュー名を入力してください']"
-              label="メニュー名を編集できます"
-              required
-            ></v-text-field>
-        </p>
-        <p>
-          <v-text-field
-              v-model="menu.price"
-              :counter="10"
-              :rules="[v => !!v || '値段を入力してください']"
-              label="値段を編集できます"
-              required
-          ></v-text-field>
-        </p>
-        <p>
-          <!-- TODO カテゴリーの編集方法 -->
-          <!-- <v-text-field
-              v-model="menu.price"
-              :counter="10"
-              :rules="[v => !!v || '値段を入力してください']"
-              label="値段を編集できます"
-              required
-          ></v-text-field>
-          カテゴリー：<input type="text" v-model="menu.category_id" size="40"> -->
-        </p>
-        <p>
-        <v-btn  @click="update">登録</v-btn>
-        </p>
-        <p>
-          <v-btn
-            @click="$router.push({ name: 'menus'})"
-          >
-            一覧ページに戻る
-          </v-btn>
-        </p>
-      </v-container>
-    </v-form>  
+    <v-container text-xs-center>
+      <v-layout row wrap justify-center>
+        <v-flex xs12 class="text-center">
+          <h1>メニュー編集</h1>
+        </v-flex>
+        <v-flex sm3 mt-5>
+          <v-card>
+            <v-card-text>
+              <v-form>
+                <v-text-field v-model="menu.name" :counter="20" label="メニュー名" required ></v-text-field>
+                <v-text-field v-model="menu.price" :counter="10" label="値段" required ></v-text-field>
+                <p>
+                  <select v-model="menu.category_id">
+                     <option disabled value="">カテゴリーを選択して下さい</option>
+                    <option v-for="category in categories" v-bind:value="category.id" v-bind:key="category.id">
+                      {{ category.name }}
+                    </option>
+                  </select>
+                   <!-- <v-select
+                    :items="categoryNames"
+                    label="Standard"
+                   ></v-select> -->
+                </p>
+                <div class="text-center">
+                  <v-btn @click="$router.push({ name: 'menus' })">キャンセル</v-btn>
+                  <v-btn color="info" class="ml-2" @click="update">保存</v-btn>
+                </div>
+              </v-form>
+            </v-card-text>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
   </div>
 </template>
 
@@ -53,7 +42,8 @@ export default {
   },
   data() {
     return {
-      menu: null
+      menu: null,
+      categories: null
     }
   },
   created() {
@@ -66,6 +56,15 @@ export default {
           (this.menu = response.data)
         )
       );
+
+    path = "http://localhost:3000/categories" ;
+    this.axios
+      .get(path)
+      .then(
+        response => (
+          (this.categories = response.data)
+        ),
+      );
   },
   methods: {
     update() {
@@ -75,6 +74,8 @@ export default {
       let params = {
         name: this.menu.name,
         price: this.menu.price,
+        category_id: this.menu.category_id
+
       };
       this.axios
       .put(path,params)

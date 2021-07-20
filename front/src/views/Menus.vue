@@ -2,7 +2,7 @@
   <div>
     <h1>メニュー  一覧</h1>
     <div>
-      <v-btn  @click="$router.push({ name: 'menus_new'})">新規メニュー登録</v-btn>
+      <v-btn class="mt-16" @click="$router.push({ name: 'menus_new'})">新規メニュー登録</v-btn>
     </div>
     <div  class="my-16">
       <v-simple-table class="table_form">
@@ -34,7 +34,7 @@
             <td class="text-right" >
               <v-btn  @click="$router.push({ name: 'menu', params: { id: menu.id } })">詳細</v-btn>
               <v-btn  @click="$router.push({ name: 'menus_edit', params: { id: menu.id } })">編集</v-btn>
-              <v-btn  @click="deleteRecord(menu.id)">削除</v-btn>
+              <v-btn  @click="deleteRecord(menu.id)" color="white--text red darken-2">削除</v-btn>
             </td>
           </tr>
     
@@ -50,7 +50,8 @@ export default {
   },
   data() {
     return {
-      menus: null
+      menus: null,
+      categories: null
     }
   },
   created() {
@@ -62,6 +63,31 @@ export default {
           (this.menus = response.data)
         )
       );
+    
+    path = "http://localhost:3000/categories";
+    this.axios
+      .get(path)
+      .then(
+        response => (
+          (this.categories = response.data)
+
+        )
+      );
+  },
+  updated(){
+    // TODO 更新しないと変わらない
+    // category.nameを表示させる処理
+    let menus = this.menus
+    let categories = this.categories
+   
+    for (let i = 0; i < menus.length; i++) {
+      for (let k = 0; k < categories.length; k++) {
+        if (menus[i].category_id == categories[k].id) {
+          // categorie_idにcategorie.nameを格納 
+          menus[i].category_id = categories[k].name
+        }
+      }
+    };
   },
   methods: {
     deleteRecord(id) {

@@ -1,31 +1,25 @@
 <template>
   <div>
-    <h1>New category form </h1>
-    <v-form>
-      <v-container>
-        <p>
-          <v-text-field
-            v-model="name"
-            :counter="10"
-            :rules="[v => !!v || 'カテゴリー名を入力してください']"
-            label="カテゴリー名を登録できます"
-            required
-          ></v-text-field>
-        </p>
-        
-      </v-container>
-     
-      <p>
-        <v-btn  @click="create">登録</v-btn>
-      </p>
-      <p>
-        <v-btn
-          @click="$router.push({ name: 'categories'})"
-        >
-          一覧ページに戻る
-        </v-btn>
-      </p>
-    </v-form> 
+    <v-container text-xs-center>
+      <v-layout row wrap justify-center>
+        <v-flex xs12 class="text-center">
+          <h1>カテゴリー新規登録 </h1>
+        </v-flex>
+        <v-flex sm3 mt-5>
+          <v-card>
+            <v-card-text>
+              <v-form>
+                <v-text-field v-model="name" :counter="20" :rules="[v => !!v || 'カテゴリー名を入力してください']" label="カテゴリー名" required ></v-text-field>
+                <div class="text-center">
+                  <v-btn @click="$router.push({ name: 'categories' })">キャンセル</v-btn>
+                  <v-btn color="info" class="ml-2" @click="create">保存</v-btn>
+                </div>
+              </v-form>
+            </v-card-text>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
   </div>
 </template>
 

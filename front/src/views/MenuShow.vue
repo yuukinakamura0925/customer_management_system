@@ -1,23 +1,40 @@
 <template>
   <div>
-    <h1>Menu info</h1>
-    <form>
-      <p>
-        名前：{{ menu.name }}
-      </p>
-      <p>
-        価格：{{ menu.price }}
-        
-      </p>
-     
-      <p>
-        <v-btn
-          @click="$router.push({ name: 'menus'})"
-        >
-          一覧ページに戻る
-        </v-btn>
-      </p>
-    </form>  
+    <div>
+      <h1>メニュー情報</h1>
+      <div class="my-16">
+        <v-simple-table class="table_form">
+          <thead>
+            <tr>
+              <th >
+                メニュー名
+              </th>
+              <th >
+                価格
+              </th>
+              <th >
+                カテゴリー
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left">{{ menu.name }}</td>
+              <td class="text-left">{{ menu.price }}</td>
+              <td class="text-left">{{ menu.category_id }}</td>
+            </tr>
+
+          </tbody>
+        </v-simple-table>
+        <p class="my-16">
+          <v-btn
+            @click="$router.push({ name: 'menus'})"
+          >
+            一覧ページに戻る
+          </v-btn> 
+        </p>
+      </div>
+    </div>  
   </div>
 </template>
 
@@ -40,6 +57,7 @@ export default {
           (this.menu = response.data)
         )
       );
+    
   },
   // methods: {
   //   create() {

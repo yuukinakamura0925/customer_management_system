@@ -1,94 +1,167 @@
 <template>
   <v-container>
     <h1>お会計ページ</h1>
-    <div v-if="customer.name">
-      『{{ customer.name }}』さんのお会計
+    <v-card
+      class="d-flex align-center justify-center pa-4 mx-auto"
+       max-width="300"
+      outlined
+    >
+      <div v-if="customer.name">
+        <p>『{{ customer.name }}』さんのお会計</p>
+      </div>
+      <div v-else>
+        『未登録のお客様』のお会計
+      </div>
+    </v-card>
+    <div>
+      <h2 class="my-16">メニュー一覧</h2>
     </div>
-    <div v-else>
-      『未登録のお客様』のお会計
-    </div>
-    <h2 class="mt-8">メニュー一覧</h2>
+   
+    <v-container
+      fluid
+      class="pa-0"
+    >
+      <v-row
+        class="mb-6"
+        no-gutters
+      >
+        <v-col
+           v-for="category in categories" 
+           :key="category.id"
+        >
+          <v-btn
+            x-large
+            color="primary"
+            dark
+          >
+            {{category.name}}
+          </v-btn>
+        </v-col>
+      </v-row>
+    </v-container>
     
     <div class="my-8">
-      <v-simple-table class="table_form">
-        <thead>
-          <tr>
-            <th> 
-              メニュー名
-            </th>
-            <th >
-              値段
-            </th>
-            <th >
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="menu in menus"
-            :key="menu.id"
-          >
-            <td class="text-left" width="300">
-              {{ menu.name }}
-            </td>
-            <td class="text-left" width="300">
-              {{ menu.price }} 円
-            </td>
-            <td width="50">
-              <v-btn @click="createCartDetail(menu.id,cart.id,menu.price)">+</v-btn>
-            </td>
+      <v-card
+        class="d-flex align-center justify-center pa-4 mx-auto"
+        max-width="1000"
+        outlined
+      >
+        <v-simple-table class="table_form">
+          <thead>
+            <tr>
+              <th> 
+                メニュー名
+              </th>
+              <th >
+                値段
+              </th>
+              <th >
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="menu in menus"
+              :key="menu.id"
+            >
+              <td class="text-left" width="300">
+                {{ menu.name }}
+              </td>
+              <td class="text-left" width="300">
+                {{ menu.price }} 円
+              </td>
+              <td width="50">
+                <v-btn @click="createCartDetail(menu.id,cart.id,menu.price)">+</v-btn>
+              </td>
 
-          </tr>
-        </tbody>
-      </v-simple-table>
+            </tr>
+          </tbody>
+        </v-simple-table>
+      </v-card>
     </div>
-    <h2>お会計カート</h2>
+    
+    <h2 class="my-16">お会計カート</h2>
     <div class="my-8">
-      <v-simple-table class="table_form">
-        <thead>
-          <tr>
-            <th> 
-              メニュー名
-            </th>
-            <th >
-              値段
-            </th>
-            <th >
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-             v-for="cart_detail in cart.cart_details"
-             :key="cart_detail.id"
-          >
-            <td class="text-left" width="300">
-              {{ cart_detail.menu_id }}
-            </td>
-            <td class="text-left" width="300">
-              {{ cart_detail.price }} 円  
-            </td>
-            <td class="text-left" width="50"> 
-              <v-btn  @click="deleteRecord(cart_detail.id,cart.id)">削除</v-btn>
-            </td>
-          </tr>
-        </tbody>
-      </v-simple-table>
+      <v-card
+        class="d-flex align-center justify-center pa-4 mx-auto"
+        max-width="1000"
+        outlined
+      >
+        <v-simple-table class="table_form">
+          <thead>
+            <tr>
+              <th> 
+                メニュー名
+              </th>
+              <th >
+                値段
+              </th>
+              <th >
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="cart_detail in cart.cart_details"
+              :key="cart_detail.id"
+            >
+              <td class="text-left" width="300">
+                {{ cart_detail.menu_id }}
+              </td>
+              <td class="text-left" width="300">
+                {{ cart_detail.price }} 円  
+              </td>
+              <td class="text-left" width="50"> 
+                <v-btn  @click="deleteRecord(cart_detail.id,cart.id)">削除</v-btn>
+              </td>
+            </tr>
+          </tbody>
+        </v-simple-table>
+      </v-card>
       <div>
-        <p>ご請求金額{{total}}円</p>
-        <v-text-field
-          v-model="deposit"
-          label="お預かり金額"
-          :rules="rules"
-          hide-details="auto"
-        ></v-text-field>
-        <div v-if="(deposit - total)<=0">
-          <p>おつり0円</p>
-        </div>
-        <div v-else>
-          <p>おつり{{deposit - total}}円</p>
-        </div>
-        <v-btn  @click="orderCreate()">お会計確定</v-btn>
+        <h3 class="mt-16">ご請求金額</h3>
+        <v-card
+          class="d-flex align-center justify-center pa-4 mx-auto"
+          max-width="550"
+          min-height="76"
+          outlined
+        >
+          <div>
+            <h2>{{total}}円 (税込)</h2>
+          </div>
+        </v-card>
+        <v-card
+          class="d-flex align-center justify-center pa-4 mx-auto mt-16"
+          max-width="550"
+          min-height="76"
+          outlined
+        >
+          <div>
+            <v-text-field
+              v-model="deposit"
+              label="お預かり金額"
+              placeholder="0"
+              :rules="[() => !!deposit || 'お預かり金額を入力してください']"
+            ></v-text-field>
+         </div>
+        </v-card>
+
+        
+        <h3 class="mt-16">おつり</h3>
+        <v-card
+          class="d-flex align-center justify-center pa-4 mx-auto"
+          max-width="550"
+          min-height="76"
+          outlined
+        >
+          <div v-if="(deposit - total)<=0">
+            <h2> 0 円</h2>
+          </div>
+          <div v-else>
+            <h2>{{deposit - total}} 円</h2>
+          </div>
+        </v-card>
+        <v-btn  class="mt-8"  @click="orderCreate()">お会計確定</v-btn>
       </div>
     </div>
   </v-container>
@@ -105,6 +178,7 @@ export default {
       menus: null,
       customer: null,
       cart:null,
+      categories: null,
       total: 0,
       orderID: 0,
       deposit: 0
@@ -125,6 +199,16 @@ export default {
         ),
       );
 
+    path = "http://localhost:3000/categories";
+    this.axios
+      .get(path)
+      .then(
+        response => (
+          (this.categories = response.data)
+        ),
+      );
+
+
     const customerID = this.$route.params["customer_id"];
     path = "http://localhost:3000/customers/" + customerID;
     this.axios
@@ -132,7 +216,6 @@ export default {
       .then(
         response => (
           (this.customer = response.data),
-          console.log(this.customer.cart.id),
           cartID = this.customer.cart.id,
           path = "http://localhost:3000/carts/" + cartID,
           this.axios
@@ -163,7 +246,7 @@ export default {
     for (let i = 0; i < cart_details.length; i++) {
       total += cart_details[i].price
     };
-    this.total = total
+    this.total = total*11/10
   },
 
   methods: {
@@ -199,6 +282,7 @@ export default {
     calculationBill(){
       this.deposit - this.total
     },
+    
 
   }
   

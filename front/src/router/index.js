@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "../views/Home.vue";
+import Login from "../views/Login.vue";
 import Customers from "../views/Customers.vue";
 import CustomerShow from "../views/CustomerShow.vue";
 import CustomerNew from "../views/CustomerNew.vue";
@@ -24,7 +25,12 @@ export default new Router({
   mode: "history",
   routes: [
     {
-      path: "/",
+      path: "/login",
+      name: "login",
+      component: Login,
+    },
+    {
+      path: "/home",
       name: "home",
       component: Home,
     },
