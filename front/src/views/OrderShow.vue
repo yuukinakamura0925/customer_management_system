@@ -20,7 +20,7 @@
                 {{ order.customer_id }}
               </v-btn>
             </td>
-            <td class="text-left">{{ order.created_at }}</td>
+            <td class="text-left">{{ order.created_at | moment }}</td>
           </tr>
         </tbody>
       </v-simple-table>
@@ -61,7 +61,13 @@
 </template>
 
 <script lang="ts">
+import moment from 'moment';
 export default {
+  filters: {
+    moment: function (date) {
+        return moment(date).format('YYYY年 MM月DD日 HH:mm');
+    },
+  },
   components: {
   },
   data() {
@@ -70,6 +76,7 @@ export default {
       customers: null,
     }
   },
+  
   created() {
     const id = this.$route.params["id"];
     let path = "http://localhost:3000/orders/" + id;
@@ -80,7 +87,6 @@ export default {
           (this.order = response.data.data)
         )
       );
-
     path = "http://localhost:3000/menus";
     this.axios
       .get(path)
@@ -88,7 +94,7 @@ export default {
         response => (
           (this.menus = response.data)
         ),
-      );
+      ); 
     path = "http://localhost:3000/customers";
     this.axios
       .get(path)
@@ -97,33 +103,26 @@ export default {
           (this.customers = response.data)
         ),
       );
-
-       // customer.nameを表示させる処理
-    let order = this.order
-    // alert(order.customer_id)
-    let customers = this.customers
-    // alert(customers)
-    for (let i = 0; i < customers.length; i++) {
-      alert(customers[i].id)
-      if (order.customer_id == customers[i].id) {
-        // order_idにcustomer.nameを格納 
-        order.customer_id = customers[i].name
-      }
-    };
   },
-  // updated(){
-  //   // TODO なぜかランダムでidの時と名前の時がある
-  //   // customer.nameを表示させる処理
-  //   let order = this.order
-  //   // alert(order.customer_id)
-  //   let customers = this.customers
-  //   // alert(customers)
-  //   for (let i = 0; i < customers.length; i++) {
-  //     if (order.customer_id == customers[i].id) {
-  //       // order_idにcustomer.nameを格納 
-  //       order.customer_id = customers[i].name
-  //     }
-  //   };
-  // },
+ 
+  methods: {
+    // convertToCustomerName() {
+    //   // TODO なぜかランダムでidの時と名前の時がある
+    //   // customer.nameを表示させる処理
+      
+    //   let order = this.order
+    //   // console.log(order.customer_id)
+    //   let customers = this.customers
+    //   // console.log(customers)
+    //   for (let i = 0; i < customers.length; i++) {
+    //     if (order.customer_id == customers[i].id) {
+    //       // order_idにcustomer.nameを格納 
+    //       // console.log("test")
+    //       order.customer_id = customers[i].name
+    //     }
+    //   };
+    // },
+  },
+  
 };
 </script>
