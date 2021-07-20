@@ -2,40 +2,42 @@
   <div>
     <h1>category info</h1>
     <form>
+      <p>名前：{{ category.name }}</p>
       <p>
-        名前：{{ category.name }}
+        <input
+          type="submit"
+          value="編集"
+          @click="
+            $router.push({
+              name: 'categories_edit',
+              params: { id: category.id }
+            })
+          "
+        />
+        <input type="submit" value="登録" @click="create" />
       </p>
-      <p>
-      <input type="submit" value="編集" @click="$router.push({ name: 'categories_edit', params: { id: category.id } })" >
-      <input type="submit" value="登録" @click="create">
-      </p>
-      <input type="submit" value="一覧ページに戻る" @click="$router.push({ name: 'categories'})" >
-      <p>
-
-      </p>
-    </form>  
+      <input
+        type="submit"
+        value="一覧ページに戻る"
+        @click="$router.push({ name: 'categories' })"
+      />
+      <p></p>
+    </form>
   </div>
 </template>
 
 <script lang="ts">
 export default {
-  components: {
-  },
+  components: {},
   data() {
     return {
       category: null
-    }
+    };
   },
   created() {
     const id = this.$route.params["id"];
     let path = "http://localhost:3000/categories/" + id;
-    this.axios
-      .get(path)
-      .then(
-        response => (
-          (this.category = response.data)
-        )
-      );
-  },
+    this.axios.get(path).then(response => (this.category = response.data));
+  }
 };
 </script>

@@ -9,22 +9,40 @@
           <v-card>
             <v-card-text>
               <v-form>
-                <v-text-field v-model="menu.name" :counter="20" label="メニュー名" required ></v-text-field>
-                <v-text-field v-model="menu.price" :counter="10" label="値段" required ></v-text-field>
+                <v-text-field
+                  v-model="menu.name"
+                  :counter="20"
+                  label="メニュー名"
+                  required
+                ></v-text-field>
+                <v-text-field
+                  v-model="menu.price"
+                  :counter="10"
+                  label="値段"
+                  required
+                ></v-text-field>
                 <p>
                   <select v-model="menu.category_id">
-                     <option disabled value="">カテゴリーを選択して下さい</option>
-                    <option v-for="category in categories" v-bind:value="category.id" v-bind:key="category.id">
+                    <option disabled value=""
+                      >カテゴリーを選択して下さい</option
+                    >
+                    <option
+                      v-for="category in categories"
+                      v-bind:value="category.id"
+                      v-bind:key="category.id"
+                    >
                       {{ category.name }}
                     </option>
                   </select>
-                   <!-- <v-select
+                  <!-- <v-select
                     :items="categoryNames"
                     label="Standard"
                    ></v-select> -->
                 </p>
                 <div class="text-center">
-                  <v-btn @click="$router.push({ name: 'menus' })">キャンセル</v-btn>
+                  <v-btn @click="$router.push({ name: 'menus' })"
+                    >キャンセル</v-btn
+                  >
                   <v-btn color="info" class="ml-2" @click="update">保存</v-btn>
                 </div>
               </v-form>
@@ -38,51 +56,36 @@
 
 <script lang="ts">
 export default {
-  components: {
-  },
+  components: {},
   data() {
     return {
       menu: null,
       categories: null
-    }
+    };
   },
   created() {
     const id = this.$route.params["id"];
     let path = "http://localhost:3000/menus/" + id;
-    this.axios
-      .get(path)
-      .then(
-        response => (
-          (this.menu = response.data)
-        )
-      );
+    this.axios.get(path).then(response => (this.menu = response.data));
 
-    path = "http://localhost:3000/categories" ;
-    this.axios
-      .get(path)
-      .then(
-        response => (
-          (this.categories = response.data)
-        ),
-      );
+    path = "http://localhost:3000/categories";
+    this.axios.get(path).then(response => (this.categories = response.data));
   },
   methods: {
     update() {
-      if (confirm("編集してもよろしいでしょうか？")){
+      if (confirm("編集してもよろしいでしょうか？")) {
         const id = this.$route.params["id"];
-      let path = "http://localhost:3000/menus/" + id;
-      let params = {
-        name: this.menu.name,
-        price: this.menu.price,
-        category_id: this.menu.category_id
-
-      };
-      this.axios
-      .put(path,params)
+        let path = "http://localhost:3000/menus/" + id;
+        let params = {
+          name: this.menu.name,
+          price: this.menu.price,
+          category_id: this.menu.category_id
+        };
+        this.axios.put(path, params);
       }
       this.$router.push({ name: "menus" });
       location.reload();
-    },
+    }
   }
 };
 </script>

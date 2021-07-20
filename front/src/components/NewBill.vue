@@ -23,21 +23,21 @@ export default {
       sex: "",
       memo: ""
     };
-    
+
     this.axios
       .post(path, params)
       .then(
         response => (
-          (this.customer = response.data.data), // TODO customerに修正  
+          (this.customer = response.data.data), // TODO customerに修正
           this.$router.push(
-            { 
+            {
               name: "bill",
               params: {customer_id: this.customer.id}
             }
-          )  
+          )
         )
       )
-  
+
   },
   methods: {
   }

@@ -7,7 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     login_user: null,
-    drawer: false,
+    drawer: false
   },
   mutations: {
     setLoginUser(state, user) {
@@ -18,7 +18,7 @@ export default new Vuex.Store({
     },
     toggleSideMenu(state) {
       state.drawer = !state.drawer;
-    },
+    }
   },
   actions: {
     setLoginUser({ commit }, user) {
@@ -36,11 +36,11 @@ export default new Vuex.Store({
     },
     toggleSideMenu({ commit }) {
       commit("toggleSideMenu");
-    },
+    }
   },
   getters: {
     // stateにログインユーザーがいたら表示、いなかったら空をいれる。（エラーにならないように空の値を入れる）
-    userName: (state) => (state.login_user ? state.login_user.displayName : ""),
-    photoURL: (state) => (state.login_user ? state.login_user.photoURL : ""),
-  },
+    userName: state => (state.login_user ? state.login_user.displayName : ""),
+    photoURL: state => (state.login_user ? state.login_user.photoURL : "")
+  }
 });

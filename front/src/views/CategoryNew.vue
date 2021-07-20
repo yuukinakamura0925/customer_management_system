@@ -3,15 +3,23 @@
     <v-container text-xs-center>
       <v-layout row wrap justify-center>
         <v-flex xs12 class="text-center">
-          <h1>カテゴリー新規登録 </h1>
+          <h1>カテゴリー新規登録</h1>
         </v-flex>
         <v-flex sm3 mt-5>
           <v-card>
             <v-card-text>
               <v-form>
-                <v-text-field v-model="name" :counter="20" :rules="[v => !!v || 'カテゴリー名を入力してください']" label="カテゴリー名" required ></v-text-field>
+                <v-text-field
+                  v-model="name"
+                  :counter="20"
+                  :rules="[v => !!v || 'カテゴリー名を入力してください']"
+                  label="カテゴリー名"
+                  required
+                ></v-text-field>
                 <div class="text-center">
-                  <v-btn @click="$router.push({ name: 'categories' })">キャンセル</v-btn>
+                  <v-btn @click="$router.push({ name: 'categories' })"
+                    >キャンセル</v-btn
+                  >
                   <v-btn color="info" class="ml-2" @click="create">保存</v-btn>
                 </div>
               </v-form>
@@ -25,26 +33,22 @@
 
 <script lang="ts">
 export default {
-  components: {
-  },
+  components: {},
   data() {
     return {
-      name: "",
-    }
+      name: ""
+    };
   },
   methods: {
     create() {
-      let path = "http://localhost:3000/categories"
+      let path = "http://localhost:3000/categories";
       let params = {
-        name: this.name,
+        name: this.name
       };
-      this.axios
-        .post(path, params)
-      this.$router.push(
-        { name: "categories"}
-      )
+      this.axios.post(path, params);
+      this.$router.push({ name: "categories" });
       location.reload();
-    },
+    }
   }
 };
 </script>
