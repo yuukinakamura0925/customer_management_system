@@ -6,13 +6,13 @@
         <v-simple-table class="table_form">
           <thead>
             <tr>
-              <th >
+              <th>
                 メニュー名
               </th>
-              <th >
+              <th>
                 価格
               </th>
-              <th >
+              <th>
                 カテゴリー
               </th>
             </tr>
@@ -23,42 +23,31 @@
               <td class="text-left">{{ menu.price }}</td>
               <td class="text-left">{{ menu.category_id }}</td>
             </tr>
-
           </tbody>
         </v-simple-table>
         <p class="my-16">
-          <v-btn
-            @click="$router.push({ name: 'menus'})"
-          >
+          <v-btn @click="$router.push({ name: 'menus' })">
             一覧ページに戻る
-          </v-btn> 
+          </v-btn>
         </p>
       </div>
-    </div>  
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 export default {
-  components: {
-  },
+  components: {},
   data() {
     return {
       menu: null
-    }
+    };
   },
   created() {
     const id = this.$route.params["id"];
     let path = "http://localhost:3000/menus/" + id;
-    this.axios
-      .get(path)
-      .then(
-        response => (
-          (this.menu = response.data)
-        )
-      );
-    
-  },
+    this.axios.get(path).then(response => (this.menu = response.data));
+  }
   // methods: {
   //   create() {
   //     let path = "http://localhost:3000/menus"
@@ -71,7 +60,7 @@ export default {
   //     this.axios
   //     .delete(path)
   //   },
-    
+
   // }
 };
 </script>

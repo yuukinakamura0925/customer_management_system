@@ -1,20 +1,23 @@
 <template>
   <div id="app">
     <v-app>
-      <Header/>
-      <SideNav/>
-      <router-view/>
-      
+      <Header />
+      <SideNav />
+      <router-view />
+
       <v-container>
-        <div v-if="this.$router.currentRoute.name === 'home'">
-        </div>
-        <div v-else-if="this.$router.currentRoute.name === 'login'">
-        </div>
+        <div v-if="this.$router.currentRoute.name === 'home'"></div>
+        <div v-else-if="this.$router.currentRoute.name === 'login'"></div>
         <div v-else>
-          <v-btn class="mt-16" color="primary lighten-1" @click="$router.push({ name: 'home'})">HOMEに戻る</v-btn>
+          <v-btn
+            class="mt-16"
+            color="primary lighten-1"
+            @click="$router.push({ name: 'home' })"
+            >HOMEに戻る</v-btn
+          >
         </div>
       </v-container>
-      
+
       <!-- <Footer/> -->
     </v-app>
   </div>
@@ -50,7 +53,7 @@ export default Vue.extend({
         this.$router.push({ name: 'login' }, () => {})
       }
     })
-    
+
   },
   methods: {
     ...mapActions(['setLoginUser', 'logout', 'deleteLoginUser'])
@@ -69,7 +72,6 @@ export default Vue.extend({
 }
 .serch_box {
   width: 400px !important;
-  margin:0 auto;
+  margin: 0 auto;
 }
 </style>
-

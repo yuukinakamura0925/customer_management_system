@@ -12,58 +12,46 @@
             required
           ></v-text-field>
         </p>
-        
       </v-container>
-     
+
       <p>
-        <v-btn  @click="update">編集</v-btn>
+        <v-btn @click="update">編集</v-btn>
       </p>
       <p>
-        <v-btn
-          @click="$router.push({ name: 'categories'})"
-        >
+        <v-btn @click="$router.push({ name: 'categories' })">
           一覧ページに戻る
         </v-btn>
       </p>
-    </v-form>  
+    </v-form>
   </div>
 </template>
 
 <script lang="ts">
 export default {
-  components: {
-  },
+  components: {},
   data() {
     return {
       category: null
-    }
+    };
   },
   created() {
     const id = this.$route.params["id"];
     let path = "http://localhost:3000/categories/" + id;
-    this.axios
-      .get(path)
-      .then(
-        response => (
-          (this.category = response.data)
-        )
-      );
+    this.axios.get(path).then(response => (this.category = response.data));
   },
   methods: {
     update() {
-      if (confirm("編集してもよろしいでしょうか？")){
+      if (confirm("編集してもよろしいでしょうか？")) {
         const id = this.$route.params["id"];
-      let path = "http://localhost:3000/categories/" + id;
-      let params = {
-        name: this.category.name,
-         
-      };
-      this.axios
-      .put(path,params)
+        let path = "http://localhost:3000/categories/" + id;
+        let params = {
+          name: this.category.name
+        };
+        this.axios.put(path, params);
       }
       this.$router.push({ name: "categories" });
       location.reload();
-    },
+    }
   }
 };
 </script>

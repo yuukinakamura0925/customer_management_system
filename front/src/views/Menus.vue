@@ -1,43 +1,51 @@
 <template>
   <div>
-    <h1>メニュー  一覧</h1>
+    <h1>メニュー 一覧</h1>
     <div>
-      <v-btn class="mt-16" @click="$router.push({ name: 'menus_new'})">新規メニュー登録</v-btn>
+      <v-btn class="mt-16" @click="$router.push({ name: 'menus_new' })"
+        >新規メニュー登録</v-btn
+      >
     </div>
-    <div  class="my-16">
+    <div class="my-16">
       <v-simple-table class="table_form">
         <thead>
           <tr>
-            <th >
+            <th>
               メニュー名
             </th>
-            <th >
+            <th>
               値段
             </th>
-            <th >
+            <th>
               カテゴリー
             </th>
-            <th >
-          
-            </th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr
-            v-for="menu in menus"
-            :key="menu.id"
-          >
-            <td class="text-left" >{{ menu.name }}</td>
-            <td class="text-left" >{{ menu.price }}</td>
+          <tr v-for="menu in menus" :key="menu.id">
+            <td class="text-left">{{ menu.name }}</td>
+            <td class="text-left">{{ menu.price }}</td>
             <!-- TODO カテゴリー名で表示する -->
-            <td class="text-left" >{{ menu.category_id }}</td>
-            <td class="text-right" >
-              <v-btn  @click="$router.push({ name: 'menu', params: { id: menu.id } })">詳細</v-btn>
-              <v-btn  @click="$router.push({ name: 'menus_edit', params: { id: menu.id } })">編集</v-btn>
-              <v-btn  @click="deleteRecord(menu.id)" color="white--text red darken-2">削除</v-btn>
+            <td class="text-left">{{ menu.category_id }}</td>
+            <td class="text-right">
+              <v-btn
+                @click="$router.push({ name: 'menu', params: { id: menu.id } })"
+                >詳細</v-btn
+              >
+              <v-btn
+                @click="
+                  $router.push({ name: 'menus_edit', params: { id: menu.id } })
+                "
+                >編集</v-btn
+              >
+              <v-btn
+                @click="deleteRecord(menu.id)"
+                color="white--text red darken-2"
+                >削除</v-btn
+              >
             </td>
           </tr>
-    
         </tbody>
       </v-simple-table>
     </div>
@@ -46,58 +54,43 @@
 
 <script lang="ts">
 export default {
-  components: {
-  },
+  components: {},
   data() {
     return {
       menus: null,
       categories: null
-    }
+    };
   },
   created() {
     let path = "http://localhost:3000/menus";
-    this.axios
-      .get(path)
-      .then(
-        response => (
-          (this.menus = response.data)
-        )
-      );
-    
-    path = "http://localhost:3000/categories";
-    this.axios
-      .get(path)
-      .then(
-        response => (
-          (this.categories = response.data)
+    this.axios.get(path).then(response => (this.menus = response.data));
 
-        )
-      );
+    path = "http://localhost:3000/categories";
+    this.axios.get(path).then(response => (this.categories = response.data));
   },
-  updated(){
+  updated() {
     // TODO 更新しないと変わらない
     // category.nameを表示させる処理
-    let menus = this.menus
-    let categories = this.categories
-   
+    let menus = this.menus;
+    let categories = this.categories;
+
     for (let i = 0; i < menus.length; i++) {
       for (let k = 0; k < categories.length; k++) {
         if (menus[i].category_id == categories[k].id) {
-          // categorie_idにcategorie.nameを格納 
-          menus[i].category_id = categories[k].name
+          // categorie_idにcategorie.nameを格納
+          menus[i].category_id = categories[k].name;
         }
       }
-    };
+    }
   },
   methods: {
     deleteRecord(id) {
-      if (confirm("削除してもよろしいでしょうか？")){
+      if (confirm("削除してもよろしいでしょうか？")) {
         let path = "http://localhost:3000/menus/" + id;
-        this.axios
-        .delete(path)
+        this.axios.delete(path);
         location.reload();
       }
-    },
+    }
   }
 };
 </script>
