@@ -5,57 +5,20 @@
     <div class="serch_box my-16">
       <v-text-field type="text" v-model="keyword" label="顧客名検索" ></v-text-field>
     </div>
-    <div class="my-16">
-      <v-simple-table class="table_form">
-        <thead>
-          <tr>
-            <th >
-              顧客ID
-            </th>
-            <th >
-              氏名
-            </th>
-            <th >
-              年齢
-            </th>
-            <th >
-              性別
-            </th>
-            <th>
-              Select button
-            </th>
-            <th>
-              お会計ページへ
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="customer in filteredCustomers"
-            :key="customer.id"
-          >
-            <td class="text-left">{{ customer.id }}</td>
-            <td class="text-left">{{ customer.name }}</td>
-            <td class="text-left">{{ customer.age }}</td>
-            <td class="text-left">{{ customer.sex }}</td>
-            <td class="text-left">
-              <v-btn  @click="$router.push({ name: 'customer', params: { id: customer.id } })">詳細</v-btn>
-              <v-btn  @click="$router.push({ name: 'customers_edit', params: { id: customer.id } })">編集</v-btn>
-              <v-btn  @click="deleteRecord(customer.id)"  color="white--text red darken-2">削除</v-btn>
-            </td>
-            <td class="text-left">
-              <v-btn  @click="$router.push({ name: 'bill', params: { customer_id: customer.id } })">会計へ</v-btn>
-            </td>
-          </tr>
-    
-        </tbody>
-      </v-simple-table>
-      <v-pagination
-        v-model="page"
-        :length="10"
-        @input = "pageChange"
-        circle
-      ></v-pagination>
+    <div class="my-16 ">
+      <v-container>
+        <v-data-table :headers="headers" :items="customers">
+          <template v-slot:[`item.action`]="{ item }">
+            <router-link :to="{ name: 'customers_edit', params: { id: item.id } }">
+              <v-icon small class="mr-2">mdi-pencil</v-icon>
+            </router-link>
+            <v-icon small class="mr-2" @click="deleteRecord(item.id)"
+              >mdi-delete
+            </v-icon>
+            <v-btn  @click="$router.push({ name: 'bill', params: { customer_id: item.id } })">会計へ</v-btn>
+          </template>
+        </v-data-table>
+      </v-container>
     </div>
   </div>
 </template>
@@ -67,19 +30,19 @@ export default {
   data() {
     return {
       keyword:'',
-      customers: null,
+      customers: [],
       page: 1,
       displayLists: [],
-      pageSize: 100,
+      pageSize: 1,
       headers: [
         { text: '顧客ID', value: 'id' },
         { text: '氏名', value: 'name' },
         { text: '年齢', value: 'age' },
         { text: '性別', value: 'sex' },
         { text: 'メモ', value: 'memo' },
-        { text: 'Select buttons', value: 'buttons' },
-        { text: 'お会計ページ', value: 'bill' }
+        { text: '操作', value: 'action' },
       ],
+
     }
   },
   computed: {
