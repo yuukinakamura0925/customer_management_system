@@ -1,16 +1,31 @@
 <template>
   <div>
     <h1>Category edit</h1>
-    <form>
-      <p>
-        名前：<input type="text" v-model="category.name" size="40">
-      </p>
+    <v-form>
+      <v-container>
+        <p>
+          <v-text-field
+            v-model="category.name"
+            :counter="10"
+            :rules="[v => !!v || 'カテゴリー名を入力してください']"
+            label="カテゴリー名を編集できます"
+            required
+          ></v-text-field>
+        </p>
+        
+      </v-container>
      
       <p>
-      <input type="submit" value="編集" @click="update">
+        <v-btn  @click="update">編集</v-btn>
       </p>
-      
-    </form>  
+      <p>
+        <v-btn
+          @click="$router.push({ name: 'categories'})"
+        >
+          一覧ページに戻る
+        </v-btn>
+      </p>
+    </v-form>  
   </div>
 </template>
 

@@ -1,9 +1,5 @@
 class CartDetailsController < ApplicationController
-   def create
-    test = params[:cart_id]
-    puts(test)
-
-    puts(cart_detail_params)
+   def create 
     cart_detail = CartDetail.new(cart_detail_params)
     if cart_detail.save
       render json: { status: "success", data: cart_detail }

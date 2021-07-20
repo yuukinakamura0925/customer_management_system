@@ -2,26 +2,30 @@
   <div id="app">
     <v-app>
       <Header/>
-      <SideNav/>  
+      <SideNav/>
       <router-view/>
-      <Footer/>
+      <!-- <Footer/> -->
     </v-app>
   </div>
 </template>
 
 <script lang="js">
 import Vue from "vue";
-import SideNav from "./components/SideNav";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import Header from "./components/Header";
-
+import SideNav from "./components/SideNav";
 export default Vue.extend({
   name: "App",
   components: {
-    SideNav,
-    Footer,
-    Header
+    // Footer,
+    Header,
+    SideNav
   },
+  data(){
+    return {
+        
+    }
+  }
 });
 </script>
 

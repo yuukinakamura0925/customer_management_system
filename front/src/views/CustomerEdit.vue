@@ -1,24 +1,54 @@
 <template>
   <div>
-    <h1>Customer edit</h1>
-    <form>
-      <p>
-        名前：<input type="text" v-model="customer.name" size="40">
-      </p>
-      <p>
-        年齢：<input type="text" v-model="customer.age" size="40">
-      </p>
-      <p>
-        性別：<input type="text" v-model="customer.sex" size="40">
-      </p>
-      <p>
-        メモ：<input type="text" v-model="customer.memo" size="40">
-      </p>
-      <p>
-      <input type="submit" value="編集" @click="update">
-      </p>
-      
-    </form>  
+    <h1>顧客編集ページ</h1>
+    <v-form>
+      <v-container>
+        <p>
+          <v-text-field
+            v-model="customer.name"
+            :counter="20"
+            :rules="[v => !!v || 'メニュー名を入力してください']"
+            label="名前を編集できます"
+            required
+          ></v-text-field>
+        </p>
+        <p>
+          <v-text-field
+            v-model="customer.age"
+            :counter="10"
+            :rules="[v => !!v || 'メニュー名を入力してください']"
+            label="年齢を編集できます"
+            required
+          ></v-text-field>
+        </p>
+        <p>
+          <v-text-field
+            v-model="customer.sex"
+            :counter="10"
+            :rules="[v => !!v || 'メニュー名を入力してください']"
+            label="性別を編集できます"
+            required
+          ></v-text-field>
+        </p>
+        <p>
+          <v-text-field
+            v-model="customer.memo"
+            :counter="10"
+            label="メモを編集できます"
+            required
+          ></v-text-field>
+        <p>
+          <v-btn  @click="update">編集</v-btn>
+        </p>
+        <p>
+          <v-btn
+           @click="$router.push({ name: 'customers'})"
+          >
+           一覧ページに戻る
+          </v-btn>
+        </p>
+      </v-container>
+    </v-form>  
   </div>
 </template>
 

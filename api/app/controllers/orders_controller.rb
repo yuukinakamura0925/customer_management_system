@@ -18,19 +18,22 @@ def create
     order_details = []
     cart_details.each do |cart_detail|
       order_detail = OrderDetail.new 
+        
       # オーダーディテールID取得
       order_detail.order_id = order_id
-      order_detail.menu_id = cart_detail.menu_id
+      order_detail.menu_price = cart_detail.price 
       # order_detail.qty = cart_detail.qty
-      # order_detail.price = cart_detail.price   
+      menus.each do |menu|
+        if menu.id == cart_detail.menu_id
+          order_detail.menu_name = menu.name
+        end
+      end
+        
       order_details << order_detail
     end
+    
     OrderDetail.import order_details
-    # if
-    # render json: { status: "success", data: order_detail }
-    # else
-    # render json: { status: "error", data: order.errors }
-    # end
+    cart_details.destroy_all 
   end
 
   def index
@@ -39,8 +42,8 @@ def create
   end
 
   def show
-    order = Order.find(params[:id])
-    render json: order
+    order = Order.includes(:order_details).find(params[:id])
+    render json: { data: order.as_json(include: :order_details)}
   end
 
   def update

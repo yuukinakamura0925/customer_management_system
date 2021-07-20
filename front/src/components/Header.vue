@@ -1,31 +1,32 @@
 <template>
-  <v-app-bar app color="primary" dark>
-    <v-app-bar-nav-icon
-    ></v-app-bar-nav-icon>
-    <div class="d-flex align-center">
-      {{ title }}
-    </div>
+  <v-app-bar 
+    app 
+    clippedLeft 
+    flat 
+    dark  
+    color="primary lighten-1" 
+  >
+    <v-app-bar-nav-icon @click="toggleSideMenu"></v-app-bar-nav-icon>
+    <v-toolbar-title>CUSTOMER MANAGEMENT</v-toolbar-title>
     <v-spacer></v-spacer>
   </v-app-bar>
 </template>
-
-<script lang="ts">
-// import { mapActions } from "vuex";
-
-export default {
-  name: "Header",
-  data() {
-    return {
-      title: "CUSTOMER MANAGEMENT SYSTEM APP",
-
-      // btn_name: "ログアウト",
-      drawer: null
-    };
-  },
-  methods: {
-    // ...mapActions(["toggleSideMenu", "logout"])
+<script>
+import { mapActions } from 'vuex'
+  export default {
+    data() {
+      return {
+        
+      }
+    },
+    methods: {
+      ...mapActions(['toggleSideMenu'])
+    }
   }
-};
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+a {
+  text-decoration: none;
+}
+</style>

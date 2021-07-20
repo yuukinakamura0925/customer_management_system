@@ -9,13 +9,13 @@
         価格：{{ menu.price }}
         
       </p>
+     
       <p>
-      <input type="submit" value="編集" @click="$router.push({ name: 'menus_edit', params: { id: menu.id } })" >
-      <input type="submit" value="登録" @click="create">
-      </p>
-      <input type="submit" value="一覧ページに戻る" @click="$router.push({ name: 'menus'})" >
-      <p>
-
+        <v-btn
+          @click="$router.push({ name: 'menus'})"
+        >
+          一覧ページに戻る
+        </v-btn>
       </p>
     </form>  
   </div>

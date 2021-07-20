@@ -1,3 +1,4 @@
 class Category < ApplicationRecord
-  has_many :menus
+  belongs_to :menu, optional: true
+  validates :name, presence: true
 end

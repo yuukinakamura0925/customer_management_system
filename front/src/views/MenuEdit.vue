@@ -1,20 +1,49 @@
 <template>
   <div>
     <h1>Menu edit</h1>
-    <form>
-      <p>
-        名前：<input type="text" v-model="menu.name" size="40">
-      </p>
-      <p>
-        価格：<input type="text" v-model="menu.price" size="40">
-      </p>
-       <p>
-        カテゴリー：<input type="text" v-model="menu.category_id" size="40">
-      </p>
-      <p>
-      <input type="submit" value="編集" @click="update">
-      </p>
-    </form>  
+    <v-form>
+      <v-container>
+        <p>
+          <v-text-field
+              v-model="menu.name"
+              :counter="10"
+              :rules="[v => !!v || 'メニュー名を入力してください']"
+              label="メニュー名を編集できます"
+              required
+            ></v-text-field>
+        </p>
+        <p>
+          <v-text-field
+              v-model="menu.price"
+              :counter="10"
+              :rules="[v => !!v || '値段を入力してください']"
+              label="値段を編集できます"
+              required
+          ></v-text-field>
+        </p>
+        <p>
+          <!-- TODO カテゴリーの編集方法 -->
+          <!-- <v-text-field
+              v-model="menu.price"
+              :counter="10"
+              :rules="[v => !!v || '値段を入力してください']"
+              label="値段を編集できます"
+              required
+          ></v-text-field>
+          カテゴリー：<input type="text" v-model="menu.category_id" size="40"> -->
+        </p>
+        <p>
+        <v-btn  @click="update">登録</v-btn>
+        </p>
+        <p>
+          <v-btn
+            @click="$router.push({ name: 'menus'})"
+          >
+            一覧ページに戻る
+          </v-btn>
+        </p>
+      </v-container>
+    </v-form>  
   </div>
 </template>
 

@@ -1,18 +1,24 @@
 <template>
   <div>
-    <h1>Menu list</h1>
+    <h1>メニュー  一覧</h1>
     <div>
       <v-btn  @click="$router.push({ name: 'menus_new'})">新規メニュー登録</v-btn>
     </div>
     <div  class="my-16">
-      <v-table>
+      <v-simple-table class="table_form">
         <thead>
           <tr>
             <th >
-              Name
+              メニュー名
             </th>
             <th >
-              price
+              値段
+            </th>
+            <th >
+              カテゴリー
+            </th>
+            <th >
+          
             </th>
           </tr>
         </thead>
@@ -21,15 +27,19 @@
             v-for="menu in menus"
             :key="menu.id"
           >
-            <td>{{ menu.name }}</td>
-            <td>{{ menu.price }}</td>
-            <td><v-btn  @click="$router.push({ name: 'menu', params: { id: menu.id } })">詳細</v-btn></td>
-            <td><v-btn  @click="$router.push({ name: 'menus_edit', params: { id: menu.id } })">編集</v-btn></td>
-            <td><v-btn  @click="deleteRecord(menu.id)">削除</v-btn></td>
+            <td class="text-left" >{{ menu.name }}</td>
+            <td class="text-left" >{{ menu.price }}</td>
+            <!-- TODO カテゴリー名で表示する -->
+            <td class="text-left" >{{ menu.category_id }}</td>
+            <td class="text-right" >
+              <v-btn  @click="$router.push({ name: 'menu', params: { id: menu.id } })">詳細</v-btn>
+              <v-btn  @click="$router.push({ name: 'menus_edit', params: { id: menu.id } })">編集</v-btn>
+              <v-btn  @click="deleteRecord(menu.id)">削除</v-btn>
+            </td>
           </tr>
     
         </tbody>
-      </v-table>
+      </v-simple-table>
     </div>
   </div>
 </template>

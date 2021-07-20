@@ -2,6 +2,13 @@ class CustomersController < ActionController::API
   def create
     customer = Customer.new(customer_params)
     if customer.save
+      customer_id = customer.id
+    else
+      render json: { status: "error", data: customer.errors }
+    end
+    cart = Cart.new
+    cart.customer_id = customer_id
+    if cart.save
       render json: { status: "success", data: customer }
     else
       render json: { status: "error", data: customer.errors }
@@ -9,13 +16,13 @@ class CustomersController < ActionController::API
   end
 
   def index
-    customers = Customer.all
-    render json: customers
+    customers = Customer.includes(:cart).all
+    render json: customers.as_json(include: :cart)
   end
 
   def show
-    customer = Customer.find(params[:id])
-    render json: customer
+    customer = Customer.includes(:cart).find(params[:id])
+    render json: customer.as_json(include: :cart)
   end
 
   def update
