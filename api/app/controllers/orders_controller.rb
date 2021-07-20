@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
 def create
-    menus = Menu.all
     # カートを引っ張ってくる
     cart = Cart.find(params[:cart_id])
     customer_id = cart.customer_id
@@ -10,7 +9,7 @@ def create
     order = Order.new
     order.customer_id = customer_id
     if order.save
-      # render json: { status: "success", data: order }
+      render json: { status: "success", data: order }
       # オーダーID取得
       order_id = order.id
     else
