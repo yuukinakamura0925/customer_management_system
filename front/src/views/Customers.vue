@@ -15,9 +15,7 @@
       <v-container>
         <v-data-table :headers="headers" :items="customers">
           <template v-slot:[`item.action`]="{ item }">
-            <router-link
-              :to="{ name: 'customer', params: { id: item.id } }"
-            >
+            <router-link :to="{ name: 'customer', params: { id: item.id } }">
               <v-icon small class="mr-2">mdi-account-details</v-icon>
             </router-link>
             <router-link
