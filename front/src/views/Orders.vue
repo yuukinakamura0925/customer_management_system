@@ -1,26 +1,24 @@
 <template>
   <div>
     <h1>お会計一覧</h1>
-    <v-btn class="mt-16" @click="$router.push({ name: 'new_bill' })">新規お会計</v-btn>
+    <v-btn class="mt-16" @click="$router.push({ name: 'new_bill' })"
+      >新規お会計</v-btn
+    >
     <div>
       <v-container>
-          <v-data-table :headers="headers" :items="orders">
-            <template v-slot:[`item.action`]="{ item }">
-            
-              <v-icon small class="mr-2" @click="deleteRecord(item.id)"
-                >mdi-delete
-              </v-icon>
-              <v-btn 
-                @click="
-                  $router.push({ name: 'order', params: { id: item.id } })
-                "
-                >お会計詳細へ</v-btn
-              >
-            </template>
-          </v-data-table>
-        </v-container>
-      </div>
-    
+        <v-data-table :headers="headers" :items="orders">
+          <template v-slot:[`item.action`]="{ item }">
+            <v-icon small class="mr-2" @click="deleteRecord(item.id)"
+              >mdi-delete
+            </v-icon>
+            <v-btn
+              @click="$router.push({ name: 'order', params: { id: item.id } })"
+              >お会計詳細へ</v-btn
+            >
+          </template>
+        </v-data-table>
+      </v-container>
+    </div>
   </div>
 </template>
 
