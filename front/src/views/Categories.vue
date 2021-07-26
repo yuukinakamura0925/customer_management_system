@@ -18,15 +18,7 @@
           <tr v-for="category in categories" :key="category.id">
             <td class="text-left">{{ category.name }}</td>
             <td class="text-right">
-              <v-btn
-                @click="
-                  $router.push({
-                    name: 'category',
-                    params: { id: category.id }
-                  })
-                "
-                >詳細</v-btn
-              >
+              
               <v-btn
                 @click="
                   $router.push({
@@ -34,12 +26,15 @@
                     params: { id: category.id }
                   })
                 "
-                >編集</v-btn
+                ><v-icon>
+                  mdi-pencil
+                </v-icon></v-btn
               >
               <v-btn
                 @click="deleteRecord(category.id)"
-                color="white--text red darken-2"
-                >削除</v-btn
+                ><v-icon>
+                  mdi-delete
+                </v-icon></v-btn
               >
             </td>
           </tr>
