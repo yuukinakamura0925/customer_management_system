@@ -18,7 +18,6 @@
           <tr v-for="category in categories" :key="category.id">
             <td class="text-left">{{ category.name }}</td>
             <td class="text-right">
-              
               <v-btn
                 @click="
                   $router.push({
@@ -30,8 +29,7 @@
                   mdi-pencil
                 </v-icon></v-btn
               >
-              <v-btn
-                @click="deleteRecord(category.id)"
+              <v-btn @click="deleteRecord(category.id)"
                 ><v-icon>
                   mdi-delete
                 </v-icon></v-btn
