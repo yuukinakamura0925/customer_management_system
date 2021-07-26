@@ -19,7 +19,8 @@
             <th>
               カテゴリー
             </th>
-            <th></th>
+            <th>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -30,20 +31,21 @@
             <td class="text-left">{{ menu.category_id }}</td>
             <td class="text-right">
               <v-btn
-                @click="$router.push({ name: 'menu', params: { id: menu.id } })"
-                >詳細</v-btn
-              >
-              <v-btn
                 @click="
                   $router.push({ name: 'menus_edit', params: { id: menu.id } })
                 "
-                >編集</v-btn
               >
+                <v-icon>
+                  mdi-pencil
+                </v-icon>
+              </v-btn>
               <v-btn
                 @click="deleteRecord(menu.id)"
-                color="white--text red darken-2"
-                >削除</v-btn
               >
+                <v-icon>
+                  mdi-delete
+                </v-icon>
+              </v-btn>
             </td>
           </tr>
         </tbody>
