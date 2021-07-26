@@ -19,8 +19,7 @@
             <th>
               カテゴリー
             </th>
-            <th>
-            </th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -39,9 +38,7 @@
                   mdi-pencil
                 </v-icon>
               </v-btn>
-              <v-btn
-                @click="deleteRecord(menu.id)"
-              >
+              <v-btn @click="deleteRecord(menu.id)">
                 <v-icon>
                   mdi-delete
                 </v-icon>
