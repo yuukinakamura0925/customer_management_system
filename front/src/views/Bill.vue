@@ -20,7 +20,7 @@
     <v-container fluid class="pa-0">
       <v-row class="mb-6" no-gutters>
         <v-col v-for="category in categories" :key="category.id">
-          <v-btn x-large color="primary" dark>
+          <v-btn v-on:click="toggleSwitch(category.id)" x-large color="primary" dark>
             {{ category.name }}
           </v-btn>
         </v-col>
@@ -46,17 +46,34 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="menu in menus" :key="menu.id">
-              <td class="text-left" width="300">
-                {{ menu.name }}
-              </td>
-              <td class="text-left" width="300">{{ menu.price }} 円</td>
-              <td width="50">
-                <v-btn @click="createCartDetail(menu.id, cart.id, menu.price)"
-                  >+</v-btn
-                >
-              </td>
-            </tr>
+
+            <div v-if="select_menus.length">
+              <tr v-for="menu in select_menus" :key="menu.id">
+                <td class="text-left" width="300">
+                  {{ menu.name }}
+                </td>
+                <td class="text-left" width="300">{{ menu.price }} 円</td>
+                <td width="50">
+                  <v-btn @click="createCartDetail(menu.id, cart.id, menu.price)"
+                    >+</v-btn
+                  >
+                </td>
+              </tr>
+            </div>
+            <div v-else>
+              <tr v-for="menu in menus" :key="menu.id">
+                <td class="text-left" width="300">
+                  {{ menu.name }}
+                </td>
+                <td class="text-left" width="300">{{ menu.price }} 円</td>
+                <td width="50">
+                  <v-btn @click="createCartDetail(menu.id, cart.id, menu.price)"
+                    >+</v-btn
+                  >
+                </td>
+              </tr>
+            </div>
+            
           </tbody>
         </v-simple-table>
       </v-card>
@@ -152,7 +169,8 @@ export default {
   },
   data() {
     return {
-      menus: null,
+      select_menus: [],
+      menus: [],
       customer: null,
       cart:null,
       categories: null,
@@ -259,6 +277,16 @@ export default {
     calculationBill(){
       this.deposit - this.total
     },
+    toggleSwitch(categoryID){
+      this.select_menus = []
+      let menus = this.menus
+      for (let i = 0; i < menus.length; i++) {  
+        if (menus[i].category_id == categoryID) {
+            this.select_menus.push(menus[i])
+        }
+      };
+    },
+
 
 
   }
