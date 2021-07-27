@@ -29,16 +29,13 @@ export default {
   data() {
     return {
       orders: [],
-      page: 1,
-      displayLists: [],
-      pageSize: 100,
       headers: [
         { text: "お会計ID", value: "id" },
         { text: "お会計日時", value: "created_at" },
         { text: "操作", value: "action" }
       ]
     }
-  },
+  },  
   created() {
     let path = "http://localhost:3000/orders";
     this.axios
