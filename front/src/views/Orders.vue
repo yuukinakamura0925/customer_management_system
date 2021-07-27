@@ -23,13 +23,7 @@
 </template>
 
 <script lang="js">
-import moment from 'moment';
 export default {
-  filters: {
-    moment: function (date) {
-        return moment(date).format('YYYY年 MM月DD日 HH:mm');
-    }
-  },
   components: {
   },
   data() {
@@ -64,9 +58,6 @@ export default {
         .delete(path)
         location.reload();
       }
-    },
-    pageChange: function(pageNumber){
-      this.displayLists = this.orders.slice(this.pageSize*(pageNumber -1), this.pageSize*(pageNumber));
     },
   }
 };
