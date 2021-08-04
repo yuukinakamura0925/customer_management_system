@@ -1,8 +1,8 @@
 <template>
   <div class="home-hero__content">
-    <v-container text-xs-center class=" login">
+    <v-container text-xs-center >
       <v-layout row wrap justify-center>
-        <v-flex xs12 class="text-center">
+        <v-flex xs12 class="text-center login" >
           <h1>【C.M SYSTEM】</h1>
           <p>
             C.M SYSTEMをご利用の方は、Googleアカウントでログインしてください。
@@ -48,6 +48,7 @@ export default {
   width: 100%;
   height: 100vh;
   margin-top: -23.98px;
+  margin-bottom: -23.98px;
 }
 .login {
   color: aliceblue;
