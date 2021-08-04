@@ -5,20 +5,12 @@
       <v-main>
         <SideNav />
         <router-view />
-        <v-container>
-          <div v-if="this.$router.currentRoute.name === 'home'"></div>
-          <div v-else-if="this.$router.currentRoute.name === 'login'"></div>
-          <div v-else>
-            <v-btn
-              class="mt-16"
-              color="primary lighten-1"
-              @click="$router.push({ name: 'home' })"
-              >HOMEに戻る</v-btn
-            >
-          </div>
-        </v-container>
       </v-main>
-      <Footer/>
+      <div v-if="this.$router.currentRoute.name === 'login'"></div>
+      <div v-else>
+       <Footer/>
+      </div>
+      
     </v-app>
   </div>
 </template>
