@@ -48,7 +48,6 @@ export default {
   width: 100%;
   height: 100vh;
   margin-top: -23.98px;
-  margin-bottom: -23.98px;
 }
 .login {
   color: aliceblue;
