@@ -4,17 +4,21 @@
     <v-btn class="mt-16" @click="$router.push({ name: 'customers_new' })"
       >新規顧客登録</v-btn
     >
-    <div class="serch_box my-16">
-      <v-text-field
-        type="text"
-        v-model="keyword"
-        label="顧客名検索"
-      ></v-text-field>
-    </div>
+    
     <div class="my-16 ">
-      <v-container>
-        <v-data-table :headers="headers" :items="customers">
+      <v-container style="max-width: 900px">
+         <v-text-field
+           v-model="search"
+           append-icon="mdi-magnify"
+           label="顧客検索（ID、名前、性別、メモいずれかで検索）"
+           single-line
+           hide-details
+         ></v-text-field>
+        <v-data-table :headers="headers" :items="customers" :search="search">
           <template v-slot:[`item.action`]="{ item }">
+            <router-link :to="{ name: 'customer', params: { id: item.id } }">
+              <v-icon small class="mr-2">mdi-account-details</v-icon>
+            </router-link>
             <router-link
               :to="{ name: 'customers_edit', params: { id: item.id } }"
             >
@@ -41,7 +45,7 @@ export default {
   components: {},
   data() {
     return {
-      keyword: "",
+      search: "",
       customers: [],
       page: 1,
       displayLists: [],

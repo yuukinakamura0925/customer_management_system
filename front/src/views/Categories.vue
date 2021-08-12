@@ -21,25 +21,18 @@
               <v-btn
                 @click="
                   $router.push({
-                    name: 'category',
-                    params: { id: category.id }
-                  })
-                "
-                >詳細</v-btn
-              >
-              <v-btn
-                @click="
-                  $router.push({
                     name: 'categories_edit',
                     params: { id: category.id }
                   })
                 "
-                >編集</v-btn
+                ><v-icon>
+                  mdi-pencil
+                </v-icon></v-btn
               >
-              <v-btn
-                @click="deleteRecord(category.id)"
-                color="white--text red darken-2"
-                >削除</v-btn
+              <v-btn @click="deleteRecord(category.id)"
+                ><v-icon>
+                  mdi-delete
+                </v-icon></v-btn
               >
             </td>
           </tr>
