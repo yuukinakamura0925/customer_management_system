@@ -5,5 +5,8 @@ Rails.application.routes.draw do
     resources :cart_details
   end
   
-  get :health_check, to: 'health_check#index'
+  namespace :api do
+    namespace :v1 do
+      get :health_check, to: 'health_check#index'
+    end
 end
