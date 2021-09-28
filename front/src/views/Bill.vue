@@ -184,8 +184,8 @@ export default {
   },
   created() {
     let cartID = 0;
-
-    let path = "http://localhost:3000/menus";
+    let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
+    let path = baseURL +  "/menus";
     this.axios
       .get(path)
       .then(
@@ -194,7 +194,7 @@ export default {
         ),
       );
 
-    path = "http://localhost:3000/categories";
+    path = baseURL + "/categories";
     this.axios
       .get(path)
       .then(
@@ -205,14 +205,14 @@ export default {
 
 
     const customerID = this.$route.params["customer_id"];
-    path = "http://localhost:3000/customers/" + customerID;
+    path = baseURL + "/customers/" + customerID;
     this.axios
       .get(path)
       .then(
         response => (
           (this.customer = response.data),
           cartID = this.customer.cart.id,
-          path = "http://localhost:3000/carts/" + cartID,
+          path = baseURL + "/carts/" + cartID,
           this.axios
             .get(path)
             .then(
@@ -246,7 +246,8 @@ export default {
 
   methods: {
     createCartDetail(menuId,cartId,menuPrice){
-      let path = "http://localhost:3000/carts/" + cartId + "/cart_details"
+      let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
+      let path = baseURL + "/carts/" + cartId + "/cart_details"
       let params = {
         cart_id: cartId,
         menu_id: menuId,
@@ -258,14 +259,15 @@ export default {
       location.reload();
     },
     deleteRecord(cartDetailID,cartID) {
-
-        let path = "http://localhost:3000/carts/" + cartID + "/cart_details/" + cartDetailID;
+        let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
+        let path = baseURL + "/carts/" + cartID + "/cart_details/" + cartDetailID;
         this.axios
         .delete(path)
         location.reload();
     },
     orderCreate(){
-      let path = "http://localhost:3000/orders/";
+      let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
+      let path = baseURL + "/orders/";
       let params = {
         cart_id: this.cart.id,
 

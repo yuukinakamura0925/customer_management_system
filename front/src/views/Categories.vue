@@ -51,13 +51,15 @@ export default {
     };
   },
   created() {
-    let path = "http://localhost:3000/categories";
+    let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
+    let path = baseURL + "/categories";
     this.axios.get(path).then(response => (this.categories = response.data));
   },
   methods: {
     deleteRecord(id) {
       if (confirm("削除してもよろしいでしょうか？")) {
-        let path = "http://localhost:3000/categories/" + id;
+        let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
+        let path = baseURL + "/categories/" + id;
         this.axios.delete(path);
         location.reload();
       }

@@ -79,13 +79,15 @@ export default {
     // }
   },
   created() {
-    let path = "http://localhost:3000/categories";
+    let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
+    let path = baseURL + "/categories";
     this.axios.get(path).then(response => (this.categories = response.data));
   },
   methods: {
     create() {
       if (confirm("メニューに登録しますか？")) {
-        let path = "http://localhost:3000/menus";
+        let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
+        let path = baseURL + "/menus";
         let params = {
           name: this.name,
           price: this.price,
