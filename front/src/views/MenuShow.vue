@@ -44,7 +44,7 @@ export default {
     };
   },
   created() {
-    let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
+    let baseURL = process.env.NODE_ENV === "production" ? "http://backend.customer-management-system.link" : "http://localhost:3000";
     const id = this.$route.params["id"];
     let path = baseURL + "/menus/" + id;
     this.axios.get(path).then(response => (this.menu = response.data));

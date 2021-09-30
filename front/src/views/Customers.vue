@@ -76,7 +76,7 @@ export default {
   },
   created() {
 
-    let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
+    let baseURL = process.env.NODE_ENV === "production" ? "http://backend.customer-management-system.link" : "http://localhost:3000";
     alert(baseURL)
 
     let path = baseURL + "/customers";
@@ -92,7 +92,7 @@ export default {
   methods: {
     
     deleteRecord(id) {
-      let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
+      let baseURL = process.env.NODE_ENV === "production" ? "http://backend.customer-management-system.link" : "http://localhost:3000";
       if (confirm("削除してもよろしいでしょうか？")) {
         let path = baseURL + "/customers/" + id;
         this.axios.delete(path);

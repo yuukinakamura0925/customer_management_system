@@ -61,7 +61,9 @@ export default {
     };
   },
   created() {
-    let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
+    let baseURL = process.env.NODE_ENV === "production" ? "http://backend.customer-management-system.link" : "http://localhost:3000";
+    alert(baseURL)
+    alert(process.env.NODE_ENV)
     let path = baseURL + "/menus";
     this.axios.get(path).then(response => (this.menus = response.data));
 
@@ -86,7 +88,7 @@ export default {
   methods: {
     deleteRecord(id) {
       if (confirm("削除してもよろしいでしょうか？")) {
-        let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
+        let baseURL = process.env.NODE_ENV === "production" ? "http://backend.customer-management-system.link" : "http://localhost:3000";
         let path = baseURL + "/menus/" + id;
         this.axios.delete(path);
         location.reload();
