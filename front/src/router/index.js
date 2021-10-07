@@ -22,67 +22,67 @@ import CategoryEdit from "../views/CategoryEdit.vue";
 Vue.use(Router);
 
 export default new Router({
-  mode: "history",
+  mode: "hash",
   routes: [
     {
       path: "/login",
       name: "login",
-      component: Login
+      component: Login,
     },
     {
       path: "/home",
       name: "home",
-      component: Home
+      component: Home,
     },
     {
       path: "/customers",
       name: "customers",
-      component: Customers
+      component: Customers,
     },
     {
       path: "/customers/:id",
       name: "customer",
-      component: CustomerShow
+      component: CustomerShow,
     },
     {
       path: "/customers_new",
       name: "customers_new",
-      component: CustomerNew
+      component: CustomerNew,
     },
     {
       path: "/customers/:id/edit",
       name: "customers_edit",
-      component: CustomerEdit
+      component: CustomerEdit,
     },
     {
       path: "/menus",
       name: "menus",
-      component: Menus
+      component: Menus,
     },
     {
       path: "/menus/:id",
       name: "menu",
-      component: MenuShow
+      component: MenuShow,
     },
     {
       path: "/menus_new",
       name: "menus_new",
-      component: MenuNew
+      component: MenuNew,
     },
     {
       path: "/menus/:id/edit",
       name: "menus_edit",
-      component: MenuEdit
+      component: MenuEdit,
     },
     {
       path: "/orders",
       name: "orders",
-      component: Orders
+      component: Orders,
     },
     {
       path: "/orders/:id",
       name: "order",
-      component: OrderShow
+      component: OrderShow,
     },
     // {
     //   path: "/orders_new",
@@ -97,33 +97,33 @@ export default new Router({
     {
       path: "/new_bill",
       name: "new_bill",
-      component: NewBill
+      component: NewBill,
     },
     {
       // パスにidのパラメーターをもたせる。
       path: "/bill/:customer_id",
       name: "bill",
-      component: Bill
+      component: Bill,
     },
     {
       path: "/categories",
       name: "categories",
-      component: Categories
+      component: Categories,
     },
     {
       path: "/categories/:id",
       name: "category",
-      component: CategoryShow
+      component: CategoryShow,
     },
     {
       path: "/categories_new",
       name: "categories_new",
-      component: CategoryNew
+      component: CategoryNew,
     },
     {
       path: "/categories/:id/edit",
       name: "categories_edit",
-      component: CategoryEdit
-    }
-  ]
+      component: CategoryEdit,
+    },
+  ],
 });
