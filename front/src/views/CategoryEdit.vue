@@ -36,14 +36,20 @@ export default {
   },
   created() {
     const id = this.$route.params["id"];
-    let baseURL = process.env.NODE_ENV === "production" ? "http://backend.customer-management-system.link" : "http://localhost:3000";
+    let baseURL =
+      process.env.NODE_ENV === "production"
+        ? "http://backend.customer-management-system.link"
+        : "http://localhost:3000";
     let path = baseURL + "/categories/" + id;
     this.axios.get(path).then(response => (this.category = response.data));
   },
   methods: {
     update() {
       if (confirm("編集してもよろしいでしょうか？")) {
-        let baseURL = process.env.NODE_ENV === "production" ? "http://backend.customer-management-system.link" : "http://localhost:3000";
+        let baseURL =
+          process.env.NODE_ENV === "production"
+            ? "http://backend.customer-management-system.link"
+            : "http://localhost:3000";
         const id = this.$route.params["id"];
         let path = baseURL + "/categories/" + id;
         let params = {

@@ -35,7 +35,7 @@ export default {
         { text: "操作", value: "action" }
       ]
     }
-  },  
+  },
   created() {
     let baseURL = process.env.NODE_ENV === "production" ? "http://backend.customer-management-system.link" : "http://localhost:3000";
     let path = baseURL + "/orders";

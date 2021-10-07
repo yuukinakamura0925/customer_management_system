@@ -79,14 +79,20 @@ export default {
     // }
   },
   created() {
-    let baseURL = process.env.NODE_ENV === "production" ? "http://backend.customer-management-system.link" : "http://localhost:3000";
+    let baseURL =
+      process.env.NODE_ENV === "production"
+        ? "http://backend.customer-management-system.link"
+        : "http://localhost:3000";
     let path = baseURL + "/categories";
     this.axios.get(path).then(response => (this.categories = response.data));
   },
   methods: {
     create() {
       if (confirm("メニューに登録しますか？")) {
-        let baseURL = process.env.NODE_ENV === "production" ? "http://backend.customer-management-system.link" : "http://localhost:3000";
+        let baseURL =
+          process.env.NODE_ENV === "production"
+            ? "http://backend.customer-management-system.link"
+            : "http://localhost:3000";
         let path = baseURL + "/menus";
         let params = {
           name: this.name,

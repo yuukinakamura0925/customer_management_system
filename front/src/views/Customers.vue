@@ -4,16 +4,16 @@
     <v-btn class="mt-16" @click="$router.push({ name: 'customers_new' })"
       >新規顧客登録</v-btn
     >
-    
+
     <div class="my-16 ">
       <v-container style="max-width: 900px">
-         <v-text-field
-           v-model="search"
-           append-icon="mdi-magnify"
-           label="顧客検索（ID、名前、性別、メモいずれかで検索）"
-           single-line
-           hide-details
-         ></v-text-field>
+        <v-text-field
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="顧客検索（ID、名前、性別、メモいずれかで検索）"
+          single-line
+          hide-details
+        ></v-text-field>
         <v-data-table :headers="headers" :items="customers" :search="search">
           <template v-slot:[`item.action`]="{ item }">
             <router-link :to="{ name: 'customer', params: { id: item.id } }">
@@ -75,9 +75,11 @@ export default {
     }
   },
   created() {
-
-    let baseURL = process.env.NODE_ENV === "production" ? "http://backend.customer-management-system.link" : "http://localhost:3000";
-    alert(baseURL)
+    let baseURL =
+      process.env.NODE_ENV === "production"
+        ? "http://backend.customer-management-system.link"
+        : "http://localhost:3000";
+    alert(baseURL);
 
     let path = baseURL + "/customers";
     this.axios
@@ -90,9 +92,11 @@ export default {
       );
   },
   methods: {
-    
     deleteRecord(id) {
-      let baseURL = process.env.NODE_ENV === "production" ? "http://backend.customer-management-system.link" : "http://localhost:3000";
+      let baseURL =
+        process.env.NODE_ENV === "production"
+          ? "http://backend.customer-management-system.link"
+          : "http://localhost:3000";
       if (confirm("削除してもよろしいでしょうか？")) {
         let path = baseURL + "/customers/" + id;
         this.axios.delete(path);

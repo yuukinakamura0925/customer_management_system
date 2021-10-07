@@ -51,14 +51,20 @@ export default {
     };
   },
   created() {
-    let baseURL = process.env.NODE_ENV === "production" ? "http://backend.customer-management-system.link" : "http://localhost:3000";
+    let baseURL =
+      process.env.NODE_ENV === "production"
+        ? "http://backend.customer-management-system.link"
+        : "http://localhost:3000";
     let path = baseURL + "/categories";
     this.axios.get(path).then(response => (this.categories = response.data));
   },
   methods: {
     deleteRecord(id) {
       if (confirm("削除してもよろしいでしょうか？")) {
-        let baseURL = process.env.NODE_ENV === "production" ? "http://backend.customer-management-system.link" : "http://localhost:3000";
+        let baseURL =
+          process.env.NODE_ENV === "production"
+            ? "http://backend.customer-management-system.link"
+            : "http://localhost:3000";
         let path = baseURL + "/categories/" + id;
         this.axios.delete(path);
         location.reload();
