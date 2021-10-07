@@ -65,8 +65,6 @@ export default {
       process.env.NODE_ENV === "production"
         ? "http://backend.customer-management-system.link"
         : "http://localhost:3000";
-    alert(baseURL);
-    alert(process.env.NODE_ENV);
     let path = baseURL + "/menus";
     this.axios.get(path).then(response => (this.menus = response.data));
 

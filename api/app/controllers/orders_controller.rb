@@ -18,9 +18,6 @@ class OrdersController < ApplicationController
         render json: { status: "error", data: order.errors }
       end
       order_details = []
-      puts cart_details
-      puts "each文開始each文開始each文開始each文開始each文開始"
-      puts menus
       cart_details.each do |cart_detail|
         order_detail = OrderDetail.new 
           

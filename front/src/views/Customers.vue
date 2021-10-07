@@ -79,7 +79,6 @@ export default {
       process.env.NODE_ENV === "production"
         ? "http://backend.customer-management-system.link"
         : "http://localhost:3000";
-    alert(baseURL);
 
     let path = baseURL + "/customers";
     this.axios
