@@ -77,7 +77,7 @@ export default {
   created() {
     let baseURL =
       process.env.NODE_ENV === "production"
-        ? "http://backend.customer-management-system.link"
+        ? "https://backend.customer-management-system.link"
         : "http://localhost:3000";
 
     let path = baseURL + "/customers";
@@ -94,7 +94,7 @@ export default {
     deleteRecord(id) {
       let baseURL =
         process.env.NODE_ENV === "production"
-          ? "http://backend.customer-management-system.link"
+          ? "https://backend.customer-management-system.link"
           : "http://localhost:3000";
       if (confirm("削除してもよろしいでしょうか？")) {
         let path = baseURL + "/customers/" + id;

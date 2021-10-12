@@ -188,7 +188,7 @@ export default {
   },
   created() {
     let cartID = 0;
-    let baseURL = process.env.NODE_ENV === "production" ? "http://backend.customer-management-system.link" : "http://localhost:3000";
+    let baseURL = process.env.NODE_ENV === "production" ? "https://backend.customer-management-system.link" : "http://localhost:3000";
     let path = baseURL +  "/menus";
     this.axios
       .get(path)
@@ -250,7 +250,7 @@ export default {
 
   methods: {
     createCartDetail(menuId,cartId,menuPrice){
-      let baseURL = process.env.NODE_ENV === "production" ? "http://backend.customer-management-system.link" : "http://localhost:3000";
+      let baseURL = process.env.NODE_ENV === "production" ? "https://backend.customer-management-system.link" : "http://localhost:3000";
       let path = baseURL + "/carts/" + cartId + "/cart_details"
       let params = {
         cart_id: cartId,
@@ -263,14 +263,14 @@ export default {
       location.reload();
     },
     deleteRecord(cartDetailID,cartID) {
-        let baseURL = process.env.NODE_ENV === "production" ? "http://backend.customer-management-system.link" : "http://localhost:3000";
+        let baseURL = process.env.NODE_ENV === "production" ? "https://backend.customer-management-system.link" : "http://localhost:3000";
         let path = baseURL + "/carts/" + cartID + "/cart_details/" + cartDetailID;
         this.axios
         .delete(path)
         location.reload();
     },
     orderCreate(){
-      let baseURL = process.env.NODE_ENV === "production" ? "http://backend.customer-management-system.link" : "http://localhost:3000";
+      let baseURL = process.env.NODE_ENV === "production" ? "https://backend.customer-management-system.link" : "http://localhost:3000";
       let path = baseURL + "/orders/";
       let params = {
         cart_id: this.cart.id,

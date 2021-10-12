@@ -81,7 +81,7 @@ export default {
   created() {
     let baseURL =
       process.env.NODE_ENV === "production"
-        ? "http://backend.customer-management-system.link"
+        ? "https://backend.customer-management-system.link"
         : "http://localhost:3000";
     let path = baseURL + "/categories";
     this.axios.get(path).then(response => (this.categories = response.data));
@@ -91,7 +91,7 @@ export default {
       if (confirm("メニューに登録しますか？")) {
         let baseURL =
           process.env.NODE_ENV === "production"
-            ? "http://backend.customer-management-system.link"
+            ? "https://backend.customer-management-system.link"
             : "http://localhost:3000";
         let path = baseURL + "/menus";
         let params = {

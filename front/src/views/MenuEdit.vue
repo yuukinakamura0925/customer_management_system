@@ -66,7 +66,7 @@ export default {
   created() {
     let baseURL =
       process.env.NODE_ENV === "production"
-        ? "http://backend.customer-management-system.link"
+        ? "https://backend.customer-management-system.link"
         : "http://localhost:3000";
     const id = this.$route.params["id"];
     let path = baseURL + "/menus/" + id;
@@ -80,7 +80,7 @@ export default {
       if (confirm("編集してもよろしいでしょうか？")) {
         let baseURL =
           process.env.NODE_ENV === "production"
-            ? "http://backend.customer-management-system.link"
+            ? "https://backend.customer-management-system.link"
             : "http://localhost:3000";
         const id = this.$route.params["id"];
         let path = baseURL + "/menus/" + id;

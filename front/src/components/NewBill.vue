@@ -16,7 +16,7 @@ export default {
   },
 
   created() {
-    let baseURL = process.env.NODE_ENV === "production" ? "http://backend.customer-management-system.link" : "http://localhost:3000"
+    let baseURL = process.env.NODE_ENV === "production" ? "https://backend.customer-management-system.link" : "http://localhost:3000"
     let path = baseURL + "/customers"
     let params = {
       name: "",
