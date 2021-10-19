@@ -7,10 +7,13 @@ RUN apk update
 COPY package.json .
 # プロジェクトの依存ライブラリをインストールする
 RUN npm install
+RUN npm install -g http-server
 # カレントワーキングディレクトリ(つまり 'app' フォルダ)にプロジェクトのファイルやフォルダをコピーする
 COPY . .
 RUN npm run build
+
 EXPOSE 3000
+
 CMD [ "http-server", "-p", "3000", "dist" ]
 
 

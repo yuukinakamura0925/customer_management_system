@@ -8,9 +8,8 @@
       </v-main>
       <div v-if="this.$router.currentRoute.name === 'login'"></div>
       <div v-else>
-       <Footer/>
+        <Footer />
       </div>
-      
     </v-app>
   </div>
 </template>

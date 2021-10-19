@@ -1,5 +1,5 @@
 <template>
-  <div>aa</div>
+  <div>LOADING</div>
 </template>
 
 <script lang="js">
@@ -16,7 +16,8 @@ export default {
   },
 
   created() {
-    let path = "http://localhost:3000/customers"
+    let baseURL = process.env.NODE_ENV === "production" ? "https://backend.customer-management-system.link" : "http://localhost:3000"
+    let path = baseURL + "/customers"
     let params = {
       name: "",
       age: 0,

@@ -20,7 +20,12 @@
     <v-container fluid class="pa-0">
       <v-row class="mb-6" no-gutters>
         <v-col v-for="category in categories" :key="category.id">
-          <v-btn v-on:click="toggleSwitch(category.id)" x-large color="primary" dark>
+          <v-btn
+            v-on:click="toggleSwitch(category.id)"
+            x-large
+            color="primary"
+            dark
+          >
             {{ category.name }}
           </v-btn>
         </v-col>
@@ -46,7 +51,6 @@
             </tr>
           </thead>
           <tbody>
-
             <div v-if="select_menus.length">
               <tr v-for="menu in select_menus" :key="menu.id">
                 <td class="text-left" width="300">
@@ -60,6 +64,7 @@
                 </td>
               </tr>
             </div>
+
             <div v-else>
               <tr v-for="menu in menus" :key="menu.id">
                 <td class="text-left" width="300">
@@ -73,7 +78,6 @@
                 </td>
               </tr>
             </div>
-            
           </tbody>
         </v-simple-table>
       </v-card>
@@ -184,7 +188,7 @@ export default {
   },
   created() {
     let cartID = 0;
-    let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
+    let baseURL = process.env.NODE_ENV === "production" ? "https://backend.customer-management-system.link" : "http://localhost:3000";
     let path = baseURL +  "/menus";
     this.axios
       .get(path)
@@ -246,7 +250,7 @@ export default {
 
   methods: {
     createCartDetail(menuId,cartId,menuPrice){
-      let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
+      let baseURL = process.env.NODE_ENV === "production" ? "https://backend.customer-management-system.link" : "http://localhost:3000";
       let path = baseURL + "/carts/" + cartId + "/cart_details"
       let params = {
         cart_id: cartId,
@@ -259,14 +263,14 @@ export default {
       location.reload();
     },
     deleteRecord(cartDetailID,cartID) {
-        let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
+        let baseURL = process.env.NODE_ENV === "production" ? "https://backend.customer-management-system.link" : "http://localhost:3000";
         let path = baseURL + "/carts/" + cartID + "/cart_details/" + cartDetailID;
         this.axios
         .delete(path)
         location.reload();
     },
     orderCreate(){
-      let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
+      let baseURL = process.env.NODE_ENV === "production" ? "https://backend.customer-management-system.link" : "http://localhost:3000";
       let path = baseURL + "/orders/";
       let params = {
         cart_id: this.cart.id,
@@ -282,7 +286,7 @@ export default {
     toggleSwitch(categoryID){
       this.select_menus = []
       let menus = this.menus
-      for (let i = 0; i < menus.length; i++) {  
+      for (let i = 0; i < menus.length; i++) {
         if (menus[i].category_id == categoryID) {
             this.select_menus.push(menus[i])
         }
