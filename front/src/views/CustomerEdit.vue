@@ -56,15 +56,17 @@ export default {
     };
   },
   created() {
+    let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
     const id = this.$route.params["id"];
-    let path = "http://localhost:3000/customers/" + id;
+    let path = baseURL + "/customers/" + id;
     this.axios.get(path).then(response => (this.customer = response.data));
   },
   methods: {
     update() {
       if (confirm("編集してもよろしいでしょうか？")) {
+        let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
         const id = this.$route.params["id"];
-        let path = "http://localhost:3000/customers/" + id;
+        let path = baseURL + "/customers/" + id;
         let params = {
           name: this.customer.name,
           age: this.customer.age,

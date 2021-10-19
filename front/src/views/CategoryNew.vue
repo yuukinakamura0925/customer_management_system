@@ -41,7 +41,8 @@ export default {
   },
   methods: {
     create() {
-      let path = "http://localhost:3000/categories";
+      let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
+      let path = baseURL + "/categories";
       let params = {
         name: this.name
       };

@@ -83,12 +83,13 @@ export default {
   },
 
   created() {
+    let baseURL = process.env.NODE_ENV === "production" ? "http://customer-management-system.link" : "http://localhost:3000";
     const id = this.$route.params["id"];
-    let path = "http://localhost:3000/orders/" + id;
+    let path = baseURL + "/orders/" + id;
     this.axios.get(path).then(response => (this.order = response.data.data));
-    path = "http://localhost:3000/menus";
+    path = baseURL + "/menus";
     this.axios.get(path).then(response => (this.menus = response.data));
-    path = "http://localhost:3000/customers";
+    path = baseURL + "/customers";
     this.axios.get(path).then(response => (this.customers = response.data));
   },
 
