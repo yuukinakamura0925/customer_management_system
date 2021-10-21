@@ -29,6 +29,9 @@ rails_init:
 migrate:
 	docker-compose run api rails db:migrate
 
+migrate_test:
+	docker-compose run api rails db:migrate RAILS_ENV=test
+
 rollback:
 	docker-compose run api rails db:rollback
 
@@ -43,3 +46,6 @@ seedreset:
 
 geminstall:
 	docker-compose run api gem install
+
+test: 
+	docker-compose run api rspec -f d
