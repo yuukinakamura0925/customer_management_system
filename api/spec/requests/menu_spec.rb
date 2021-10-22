@@ -7,13 +7,13 @@ RSpec.describe "Menus", type: :request do
       # ActiveRecord::Base.logger = Logger.new(STDOUT)
 
       # テストデータの準備
-      FactoryBot.create_list(:category, 1)
+      category = FactoryBot.create(:category)
 
       # パラメータ
       menu_params = { 
         name: "beer", 
         price: 500,
-        category_id: 1,
+        category_id: category.id,
       }
 
       # リクエスト成功を表す200が返ってきていること
@@ -28,8 +28,8 @@ RSpec.describe "Menus", type: :request do
   describe 'List' do
     it '全てのメニューを取得する' do
       # ActiveRecord::Base.logger = Logger.new(STDOUT)
-      FactoryBot.create_list(:category, 1)
-      FactoryBot.create_list(:menu, 10)
+      category = FactoryBot.create(:category)
+      FactoryBot.create_list(:menu, 10, category_id: category.id)
 
       get '/menus'
       json = JSON.parse(response.body)
@@ -46,12 +46,12 @@ RSpec.describe "Menus", type: :request do
     it 'メニューを1件取得する' do
       # ActiveRecord::Base.logger = Logger.new(STDOUT)
 
-      FactoryBot.create_list(:category, 1)
+      category = FactoryBot.create(:category)
       menu = FactoryBot.create(
         :menu, 
         name: "beer", 
         price: 500,
-        category_id: 1,
+        category_id: category.id,
       )
 
       get "/menus/#{menu.id}"
@@ -73,12 +73,12 @@ RSpec.describe "Menus", type: :request do
       # ActiveRecord::Base.logger = Logger.new(STDOUT)
 
       # テストデータの準備
-      FactoryBot.create_list(:category, 1)
+      category = FactoryBot.create(:category)
       menu = FactoryBot.create(
         :menu, 
         name: "beer", 
         price: 500,
-        category_id: 1,
+        category_id: category.id,
       )
 
       # パラメータ
@@ -106,12 +106,12 @@ RSpec.describe "Menus", type: :request do
       # ActiveRecord::Base.logger = Logger.new(STDOUT)
 
       # テストデータの準備
-      FactoryBot.create_list(:category, 1)
+      category = FactoryBot.create(:category)
       menu = FactoryBot.create(
         :menu, 
         name: "beer", 
         price: 500,
-        category_id: 1,
+        category_id: category.id,
       )
 
       # リクエスト成功を表す200が返ってきていること

@@ -22,12 +22,13 @@ RSpec.describe "Categories", type: :request do
     end
   end
 
+
   describe 'List' do
     it '全てのカテゴリーを取得する' do
       ActiveRecord::Base.logger = Logger.new(STDOUT)
       FactoryBot.create_list(:category, 10)
 
-      get '/categor'
+      get '/categories'
       json = JSON.parse(response.body)
 
       # リクエスト成功を表す200が返ってきたか確認する。
