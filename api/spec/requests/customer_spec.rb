@@ -76,7 +76,6 @@ RSpec.describe "Customers", type: :request do
       # ActiveRecord::Base.logger = Logger.new(STDOUT)
 
       # テストデータの準備
-      FactoryBot.create_list(:category, 1)
       customer = FactoryBot.create(
         :customer, 
    
@@ -111,7 +110,6 @@ RSpec.describe "Customers", type: :request do
       # ActiveRecord::Base.logger = Logger.new(STDOUT)
 
       # テストデータの準備
-      FactoryBot.create_list(:category, 1)
       customer = FactoryBot.create(
         :customer, 
         name: "tarou",
