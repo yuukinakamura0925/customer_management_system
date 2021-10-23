@@ -4,7 +4,7 @@ RSpec.describe "Categories", type: :request do
   describe 'Create', type: :request do
     it 'カテゴリーを新規追加する' do
       # ログ出力
-      ActiveRecord::Base.logger = Logger.new(STDOUT)
+      # ActiveRecord::Base.logger = Logger.new(STDOUT)
 
       # テストデータの準備
 
@@ -24,10 +24,10 @@ RSpec.describe "Categories", type: :request do
 
   describe 'List' do
     it '全てのカテゴリーを取得する' do
-      ActiveRecord::Base.logger = Logger.new(STDOUT)
+      # ActiveRecord::Base.logger = Logger.new(STDOUT)
       FactoryBot.create_list(:category, 10)
 
-      get '/categor'
+      get '/categories'
       json = JSON.parse(response.body)
 
       # リクエスト成功を表す200が返ってきたか確認する。
@@ -40,7 +40,7 @@ RSpec.describe "Categories", type: :request do
 
   describe 'GET' do
     it 'カテゴリーを1件取得する' do
-      ActiveRecord::Base.logger = Logger.new(STDOUT)
+      # ActiveRecord::Base.logger = Logger.new(STDOUT)
 
       category = FactoryBot.create(
         :category, 
@@ -61,7 +61,7 @@ RSpec.describe "Categories", type: :request do
   describe 'Update' do
     it 'カテゴリーを更新する' do
       # ログ出力
-      ActiveRecord::Base.logger = Logger.new(STDOUT)
+      # ActiveRecord::Base.logger = Logger.new(STDOUT)
 
       # テストデータの準備
       category = FactoryBot.create(
@@ -91,7 +91,7 @@ RSpec.describe "Categories", type: :request do
   describe 'Delete' do
     it 'カテゴリーを削除する' do
       # ログ出力
-      ActiveRecord::Base.logger = Logger.new(STDOUT)
+      # ActiveRecord::Base.logger = Logger.new(STDOUT)
 
       # テストデータの準備
       
