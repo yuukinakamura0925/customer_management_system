@@ -66,6 +66,7 @@ RSpec.describe "Menus", type: :request do
       expect(json['category_id']).to eq(menu.category_id)
     end
   end
+  
   describe 'Update' do
     it 'メニューを更新する' do
       # ログ出力
