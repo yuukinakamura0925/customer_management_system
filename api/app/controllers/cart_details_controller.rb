@@ -36,7 +36,6 @@ class CartDetailsController < ApplicationController
     end
   end
 
-
   private
   def cart_detail_params
     # params.require(:cart_detail).permit(:name, :age, :sex, :memo)
