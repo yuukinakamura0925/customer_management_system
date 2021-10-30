@@ -27,14 +27,14 @@ class CartsController < ApplicationController
     # render json: { data: cart_details}
   end
 
-  def update
-    cart = Cart.find(params[:id])
-    if cart.update(cart_params)
-      render json: { status: "success", data: cart }
-    else
-      render json: { status: "error", data: cart.errors }
-    end
-  end
+  # def update
+  #   cart = Cart.find(params[:id])
+  #   if cart.update(cart_params)
+  #     render json: { status: "success", data: cart }
+  #   else
+  #     render json: { status: "error", data: cart.errors }
+  #   end
+  # end
 
   def destroy
     cart = Cart.find(params[:id])

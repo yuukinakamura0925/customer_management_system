@@ -48,14 +48,14 @@ class OrdersController < ApplicationController
     render json: { data: order.as_json(include: :order_details)}
   end
 
-  def update
-    order = Order.find(params[:id])
-    if order.update(order_params)
-      render json: { status: "success", data: order }
-    else
-      render json: { status: "error", data: order.errors }
-    end
-  end
+  # def update
+  #   order = Order.find(params[:id])
+  #   if order.update(order_params)
+  #     render json: { status: "success", data: order }
+  #   else
+  #     render json: { status: "error", data: order.errors }
+  #   end
+  # end
 
   def destroy
     order = Order.find(params[:id])
