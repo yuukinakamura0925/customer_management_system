@@ -67,9 +67,6 @@ class OrdersController < ApplicationController
   end
 
   private
-  def create_order_params
-    
-  end
 
   def order_params
     params.permit(:customer_id, :order_detail_id)
