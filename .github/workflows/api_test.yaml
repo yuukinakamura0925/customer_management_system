@@ -39,7 +39,7 @@ jobs:
       - name: exec migrate
         run: | 
           cd api
-          rails db:migrate  
+          rails db:migrate RAILS_ENV=test
 
       - name: exec rspec
         run: |
