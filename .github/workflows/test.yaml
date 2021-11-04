@@ -38,12 +38,15 @@ jobs:
         env:
           RAILS_ENV: ${{ env.RAILS_ENV }}
         run: | 
-          make db_create  
+          cd api
+          rails db:create
 
       - name: exec migrate
         run: | 
-          make migrate     
+          cd api
+          rails db:migrate  
 
       - name: exec rspec
         run: |
-          make test
+          cd api
+          rspec -f d
