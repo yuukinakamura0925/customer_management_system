@@ -25,6 +25,8 @@ rails_init:
 	make migrate;
 	make seed
 	
+db_create:
+	docker-compose run api rails db:create          
 
 migrate:
 	docker-compose run api rails db:migrate
@@ -49,3 +51,4 @@ geminstall:
 
 test: 
 	docker-compose run api rspec -f d
+
