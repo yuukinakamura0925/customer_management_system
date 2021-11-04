@@ -1,10 +1,9 @@
-name: test
+name: api_test
 
 on: push
 
 env:
   RUBY_VERSION: 2.7.1
-  RAILS_ENV: test
 
 jobs:
   exec-spec:
