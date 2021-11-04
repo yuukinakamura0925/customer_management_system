@@ -24,7 +24,7 @@ jobs:
           bundler-cache: true
       - name: Test with Rspec
         run: |
-        gem install bundler
-        bundle install --path api --quiet --jobs=4 --retry 3 
-        bundle exec rspec 
-         
+          cd api
+          gem install bundler
+          bundle install
+          bundle exec rspec
