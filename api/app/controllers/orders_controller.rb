@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   def create
       # メニューを引っ張ってくる
-      menus = Menu.all
+      menus = 
       # カートを引っ張ってくる
       cart = Cart.find(params[:cart_id])
       customer_id = cart.customer_id
