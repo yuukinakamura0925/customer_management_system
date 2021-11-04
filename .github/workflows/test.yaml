@@ -1,0 +1,35 @@
+name: Rspec
+
+on:
+  push:
+    paths:
+      - "api"
+
+env:
+  RUBY_VERSION: 2.7.1
+  RAILS_ENV: test
+
+jobs:
+  exec-spec:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: docker build
+        run: | 
+          make up
+
+      - name: setup backend
+        env:
+          RAILS_ENV: test
+        run: | 
+          make db_create  
+
+      - name: exec migrate
+        run: | 
+          make migrate     
+
+      - name: exec rspec
+        run: |
+          make test
