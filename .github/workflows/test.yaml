@@ -16,7 +16,6 @@ jobs:
           - 3306:3306
         env:
           MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: app_test
 
     steps:
       - uses: actions/checkout@v2
@@ -35,11 +34,9 @@ jobs:
           bundle install
 
       - name: setup backend
-        env:
-          RAILS_ENV: ${{ env.RAILS_ENV }}
         run: | 
           cd api
-          rails db:create
+          rails db:create RAILS_ENV=test
 
       - name: exec migrate
         run: | 
