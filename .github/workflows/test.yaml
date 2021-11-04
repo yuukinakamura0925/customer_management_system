@@ -2,21 +2,41 @@ name: test
 
 on: push
 
+env:
+  RUBY_VERSION: 2.7.1
+  RAILS_ENV: test
 
 jobs:
   exec-spec:
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: app_test
 
     steps:
       - uses: actions/checkout@v2
+        
+      # Rubyの環境設定
+      - name: setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+          bundler-cache: true
 
-      - name: docker build
-        run: | 
-          make up
+      - name: setup bundler
+        run: |
+          cd api
+          gem install bundler
+          bundle install
 
       - name: setup backend
         env:
-          RAILS_ENV: test
+          RAILS_ENV: ${{ env.RAILS_ENV }}
         run: | 
           make db_create  
 
