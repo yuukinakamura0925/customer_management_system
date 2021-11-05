@@ -1,30 +1,47 @@
-name: Rspec
+name: api_test
 
-on:
-  push:
-    paths:
-      - "api"
+on: push
 
 env:
   RUBY_VERSION: 2.7.1
-  RAILS_ENV: test
 
 jobs:
-  setup-Rspec:
-    name: Rspec
+  exec-spec:
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: password
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: setup Ruby
+      - name: setup ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
-      - name: Test with Rspec
+
+      - name: setup bundler
         run: |
           cd api
           gem install bundler
           bundle install
-          bundle exec rspec
+
+      - name: setup backend
+        run: |
+          cd api
+          rails db:create RAILS_ENV=test
+
+      - name: exec migrate
+        run: |
+          cd api
+          rails db:migrate RAILS_ENV=test
+
+      - name: exec rspec
+        run: |
+          cd api
+          rspec -f d
