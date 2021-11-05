@@ -30,14 +30,17 @@ jobs:
           cd api
           gem install bundler
           bundle install
+
       - name: setup backend
         run: |
           cd api
           rails db:create RAILS_ENV=test
+
       - name: exec migrate
         run: |
           cd api
           rails db:migrate RAILS_ENV=test
+
       - name: exec rspec
         run: |
           cd api
