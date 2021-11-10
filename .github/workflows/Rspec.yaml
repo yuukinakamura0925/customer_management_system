@@ -1,9 +1,7 @@
 name: api_test
 
-on:
-  push:
-    paths:
-      - "api/**"
+on: push
+
 env:
   RUBY_VERSION: 2.7.1
 
