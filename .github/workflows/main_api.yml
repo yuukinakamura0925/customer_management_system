@@ -5,7 +5,7 @@ on:
     branches:
       - fix/setup-github-actions-CD
     paths:
-      - api
+      - "api/**"
 
 jobs:
   build-and-push:
