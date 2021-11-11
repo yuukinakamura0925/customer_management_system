@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - fix/setup-github-actions-CD
-    # paths:
-    #   - "front/**"
+    paths:
+      - "front/**"
 
 jobs:
   build-and-push:
