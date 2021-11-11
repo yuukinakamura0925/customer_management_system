@@ -3,7 +3,7 @@ name: Build and Push api
 on:
   push:
     branches:
-      - fix/setup-github-actions-CD
+      - develop
     paths:
       - "api/**"
 
