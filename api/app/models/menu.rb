@@ -1,6 +1,6 @@
 class Menu < ApplicationRecord
   belongs_to :cart_detail, optional: true
-  has_one :category
+  belongs_to :category, optional: true
   # name,priceどちらもないとデータベースに保存されない
   validates :name, :price, presence: true
 
