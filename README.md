@@ -40,16 +40,22 @@
 ### ログイン
 [![Image from Gyazo](https://i.gyazo.com/bde3e16babf3a8912bf3e95f134ee4ee.gif)](https://gyazo.com/bde3e16babf3a8912bf3e95f134ee4ee)
 
+### ホーム画面
+[![Image from Gyazo](https://i.gyazo.com/2261ac4536c98fab62a839364d70d280.gif)](https://gyazo.com/2261ac4536c98fab62a839364d70d280)
+
+### サイドメニュー
+[![Image from Gyazo](https://i.gyazo.com/69a4898e5cf1b13880cd8063f00c3bfd.gif)](https://gyazo.com/69a4898e5cf1b13880cd8063f00c3bfd)
+
 ### 顧客登録
 [![Image from Gyazo](https://i.gyazo.com/a414509755588587bafe5b5091b73058.gif)](https://gyazo.com/a414509755588587bafe5b5091b73058)
-<img src= width="500">
+
 
 ### 検索機能
 [![Image from Gyazo](https://i.gyazo.com/6a551dac78b06f47d0e518dde0dab8ef.gif)](https://gyazo.com/6a551dac78b06f47d0e518dde0dab8ef)
 
 
 ### お会計機能
-[![Image from Gyazo](https://i.gyazo.com/a885c131c2dfc57aca9a5f0660f1e527.gif)](https://gyazo.com/a885c131c2dfc57aca9a5f0660f1e527)
+[![Image from Gyazo](https://i.gyazo.com/c488a019fd4007d14ad1292b75ad2b7d.gif)](https://gyazo.com/c488a019fd4007d14ad1292b75ad2b7d)
 
 
 
@@ -193,5 +199,7 @@
 
 ### 今後追加したい機能
 - 顧客詳細ページに「今まで飲んだビール（お酒）の量」を表示できるようにし、その量に応じてランクも表示される。
+- お会計カートに商品を入れる際の処理を早くしたい。（画面をリダイレクトせず、フロントの処理で表示する）
 - お会計一覧を年別、月別表示できるようにする。
 - お会計詳細ページにて合計金額、お預かり金額、おつりを表示する。
+
