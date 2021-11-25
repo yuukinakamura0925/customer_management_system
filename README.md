@@ -93,7 +93,7 @@
 
 
 ### 検索機能一覧
-- (Vuetifyを使用)
+- 検索機能
   - キーワード検索
   - カテゴリ検索
   - ID検索
@@ -101,7 +101,7 @@
   - ページネーション機能
 
 ### その他
-- テスト機能(rspec)
+- バックエンドユニットテスト機能(Rspec)
 
 ### テーブル設計
 - customers テーブル（カスタマーを情報管理するテーブル）
@@ -178,7 +178,7 @@
 |updated_at|datetime| 自動生成|
 
 ### ER図
-![Image from Gyazo](https://i.gyazo.com/2c5e0aea3ed3d0427723b4e2b32337d9.ng)]
+[![Image from Gyazo](https://i.gyazo.com/296d63de6a0b8182c49b2077f0068c51.png)](https://gyazo.com/296d63de6a0b8182c49b2077f0068c51)
 
 ### 使用技術
 - フロントエンド
@@ -188,7 +188,7 @@
   - Ruby on Rails (6.0.3.6)
   - Firebase authentication（ログイン機能）
 - DB 
-  - MySQL (0.4.4)
+  - MySQL (RDS)
 - インフラ
   - AWS (VPC | RDS | EC2 | ECR | ECS | Route53 | ACM| ALB ）
   - Docker  / docker-compose 
