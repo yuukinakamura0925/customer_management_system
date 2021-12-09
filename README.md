@@ -10,7 +10,7 @@
 ### URL
 
 - アプリ URL：https://customer-management-system.link/#/login（グーグルアカウントにてログイン可能）
-
+- （http://customer-management-system.link/#/login）にアクセスしても上記（httpsから始まる）URLにリダイレクトを設定済み。
 ## アプリの特徴
 
 - 顧客情報（名前、性別、年齢、特徴など）を登録し管理することができる
